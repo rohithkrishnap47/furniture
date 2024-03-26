@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Head -->
+
+<head>
+  <!-- Page Meta Tags-->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+
+  <!-- Custom Google Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Roboto:wght@300;400;700&display=auto"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+  <link rel="mask-icon" href="./assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="./assets/css/libs.bundle.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
+  <!-- SWEET ALERT -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+  <!-- RAZORPAY -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- bootstrap -->
+  <!--  -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <!-- Fix for custom scrollbar if JS is disabled-->
+  <noscript>
+    <style>
+      /**
+          * Reinstate scrolling for non-JS clients
+          */
+      .simplebar-content-wrapper {
+        overflow: auto;
+      }
+    </style>
+  </noscript>
+
+  <!-- Page Title -->
+  <title>Furniture Emporium</title>
+
+</head>
+
+<body class="">
+
+  <!-- Main Section-->
+  <section class="mt-0  vh-lg-100">
+    <!-- Page Content Goes Here -->
+    <div class="container">
+      <div class="row g-0 vh-lg-100">
+        <div class="col-lg-7 pt-5 pt-lg-10">
+          <div class="pe-lg-5">
+            <!-- Logo-->
+            <a class="navbar-brand fw-bold fs-3 flex-shrink-0 mx-0 px-0" href="./index.html">
+              <div class="d-flex align-items-center">
+                <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                  <path
+                    d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                    fill="currentColor" fill-rule="evenodd" />
+                </svg>
+              </div>
+            </a>
+            <!-- / Logo-->
+            <nav class="d-none d-md-block">
+              <ul class="list-unstyled d-flex justify-content-start mt-4 align-items-center fw-bolder small">
+                <li class="me-4"><a class="nav-link-checkout " href="./cart.html">Your Cart</a></li>
+                <li class="me-4"><a class="nav-link-chec active" href="./checkout.html">Checkout & Payment</a></li>
+                <!-- CHECK-OUT  SHIPPING  -->
+                <!-- <li class="me-4"><a class="nav-link-checkout " href="./checkout-shipping.html">Shipping</a></li> -->
+                <!-- <li><a class="nav-link-checkout nav-link-last " href="./checkout-payment.html">Payment</a></li> -->
+              </ul>
+            </nav>
+            <div class="mt-5">
+              <!-- Checkout Panel Information-->
+
+              <h3 class="fs-5 mt-5 fw-bolder mb-4 border-bottom pb-4">Select Address</h3>
+              <div class="row">
+                <form onsubmit="">
+                  <!-- Radio Buttons to Select Address -->
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label class="form-label">Select Address</label>
+
+                      <!-- Box-style address selection -->
+                      <!---------------------------------------->
+                      <div id="addresslisting">
+                        <!-- address list here -->
+                      </div>
+
+                      <!-- <div class="card border">
+                        <div class="card-body d-flex justify-content-between">
+                          <div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" name="addressSelection" id="address2">
+                              <label class="form-check-label" for="address2">
+                                Second Address (2)
+                              </label>
+                            </div>
+                          </div>
+                          <div>
+                            <button type="button" class="btn btn-outline-primary me-2">Edit</button>
+                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                          </div>
+                        </div>
+                      </div> -->
+                      <!-- End of Box-style address selection -->
+                      <!---------------------------------------->
+
+                      <!-- You can dynamically generate these radio buttons based on user's addresses -->
+
+                    </div>
+                  </div>
+
+                  <!-- ADD-ADDRESS-MODAL -->
+
+
+                  <div class="card shadow mb-4">
+                    <div class="card-header py-3 text-center" onclick="addshippingdata()">
+                      <button type="button" class="btn btn-outline-primary mx-auto"
+                        onclick="$('#myModal').modal('show')">ADD ADDRESS</button>
+                    </div>
+
+
+                    <!-- PAYMENT PAGE CONTENT ---------------------------------------------------->
+
+                    <h3 class="fs-5 fw-bolder mb-4 border-bottom pb-4">Payment Information</h3>
+
+                    <div class="row">
+
+                      <!-- Payment Option-->
+                      <div class="col-12">
+                        <div class="form-check form-group form-check-custom form-radio-custom mb-3">
+                          <input class="form-check-input" type="radio" name="checkoutPaymentMethod" id="COD">
+                          <label class="form-check-label" for="COD">
+                            <span class="d-flex justify-content-between align-items-start">
+                              <span>
+                                <span class="mb-0 fw-bolder d-block">Cash On Delivery</span>
+                              </span>
+                              <img src="assets/images/favicon/cash-on-delivery (1).png" alt="" width="32" height="32">
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <!-- Payment Option-->
+                      <div class="col-12">
+                        <div class="form-check form-group form-check-custom form-radio-custom mb-3">
+                          <input class="form-check-input" type="radio" name="checkoutPaymentMethod" id="ONLINE">
+                          <label class="form-check-label" for="ONLINE">
+                            <span class="d-flex justify-content-between align-items-start">
+                              <span>
+                                <span class="mb-0 fw-bolder d-block">Online</span>
+                              </span>
+                              <img src="assets/images/favicon/credit-card.png" alt="" width="32" height="32">
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      <!-- Payment Option-->
+                      <div class="col-12">
+                        <div class="form-check form-group form-check-custom form-radio-custom mb-3">
+                          <input class="form-check-input" type="radio" name="checkoutPaymentMethod"
+                            id="checkoutPaymentPaypal">
+                          <!-- <label class="form-check-label" for="checkoutPaymentPaypal">
+                            <span class="d-flex justify-content-between align-items-start">
+                              <span>
+                                <span class="mb-0 fw-bolder d-block">Online Payment</span>
+                              </span>
+                              <img src="assets/images/favicon/credit-card.png" alt="" width="32" height="32">
+                            </span>
+                          </label> -->
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+                    <!-- Paypal Info-->
+                    <div class="paypal-details bg-light p-4 d-none my-3 fw-bolder">
+                      Please click on complete order. You will then be transferred to Razorpay to enter your payment
+                      details.
+                    </div>
+                    <!--  -->
+
+
+                    <!-- ADD Category MODAL------------------------------------------- -->
+                    <div class="modal fade" id="myModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Add New Address</h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                              onclick="$('#myModal').modal('hide')">&times;</button>
+                          </div>
+
+                          <div class="modal-body">
+                            <div class="addAddress">
+                              <!-- First Name-->
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label class="form-label">First name</label>
+                                  <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                </div>
+                              </div>
+
+                              <!-- Last Name-->
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label class="form-label">Last name</label>
+                                  <input type="text" class="form-control" id="lastName" placeholder="" required>
+                                </div>
+                              </div>
+
+                              <!-- Address-->
+                              <div class="col-12">
+                                <div class="form-group">
+                                  <label class="form-label">Address</label>
+                                  <input type="text" class="form-control" id="address"
+                                    placeholder="Enter your valid address" required>
+                                </div>
+                              </div>
+
+                              <!-- Country-->
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label class="form-label">Country</label>
+                                  <select class="form-select" id="country" required>
+                                    <option disabled selected>Please Select...</option>
+                                    <option value="india">India</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <!-- State-->
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="form-label">State</label>
+                                  <select class="form-select" id="state" required>
+                                    <option disabled selected>Please Select...</option>
+                                    <option value="ap">Andhra Pradesh</option>
+                                    <option value="ka">Karnataka</option>
+                                    <option value="kl">Kerala</option>
+                                    <option value="tn">Tamil Nadu</option>
+                                    <option value="tl">Telangana</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <!-- Post Code-->
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="form-label">PinCode</label>
+                                  <input type="text" class="form-control" id="pincode" placeholder="" required>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                              onclick="$('#myModal').modal('hide')">Close</button>
+                            <button id="bannerIdDisplay" type="button" class="btn btn-primary"
+                              onclick="addshippingdata()">OK</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- --------------------- -->
+
+                  <!-- ADD-ADDRESS-MODAL (end) -->
+
+                </form>
+              </div>
+
+              <!-- <div class="pt-4 mt-4 pb-5 border-top d-flex justify-content-between align-items-center">
+                Shipping Same Checkbox
+                <div class="form-group form-check m-0">
+                  <input type="checkbox" class="form-check-input" id="same-address" checked>
+                  <label class="form-check-label" for="same-address">Use for billing address</label>
+                </div>
+              </div> -->
+              <div onclick="placeOrder()"
+                class="pt-5 mt-5 pb-5 border-top d-flex justify-content-md-end align-items-center">
+                <button class="btn btn-dark w-100 w-md-auto" id="pay-button" role="button">Proceed to shipping</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5 bg-light pt-lg-10 aside-checkout pb-5 pb-lg-0 my-5 my-lg-0">
+          <div class="p-4 py-lg-0 pe-lg-0 ps-lg-5">
+            <div class="pb-3" id="cartlisting">
+
+            </div>
+            <!-- COUPON -->
+            <div class="py-4">
+              <div class="input-group mb-0">
+                <select class="form-control" id="couponDropdown">
+                  <option value="" disabled selected>Select your coupon code</option>
+                </select>
+                <button class="btn btn-dark btn-sm px-4" onclick="applyCoupon()">Apply</button>
+              </div>
+              <!-- PRICE -->
+              <div id="totalAmount">
+                <!-- <div class="py-4 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <p class="m-0 fw-bolder fs-6">Subtotal</p>
+                  <p class="m-0 fs-6 fw-bolder">$422.99</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center ">
+                  <p class="m-0 fw-bolder fs-6">Shipping</p>
+                  <p class="m-0 fs-6 fw-bolder">$8.95</p>
+                </div>
+              </div>
+              <div class="py-4 border-bottom">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="m-0 fw-bold fs-5">Grand Total</p>
+                    <span class="text-muted small">Inc $45.89 sales tax</span>
+                  </div>
+                  <p class="m-0 fs-5 fw-bold">$422.99</p>
+                </div>
+              </div> -->
+              </div>
+              <!-- <div class="py-4">
+              <div class="input-group mb-0">
+                <input type="text" class="form-control" placeholder="Enter your coupon code">
+                <button class="btn btn-dark btn-sm px-4">Apply</button>
+              </div>
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Content -->
+  </section>
+  <!-- / Main Section-->
+
+  <!-- AUTH -->
+  <script src="./assets/js/auth.js"></script>
+  <!-- Vendor JS -->
+  <script src="./assets/js/vendor.bundle.js"></script>
+
+  <!-- Theme JS -->
+  <script src="./assets/js/theme.bundle.js"></script>
+
+  <script>
+    let couponId = 0;
+    let couponvalue = 0;
+    let addressList = []
+    let cart = [];
+    let cartInfo = [];
+    var token = localStorage.getItem('token');
+    var headers = {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+    var selected_address
+    var addressId
+    const paymentToggles = document.querySelectorAll('[name="checkoutPaymentMethod"]') || [];
+    var paymentMeth;
+    // ----------------------------------------------------------------------------------------
+    getCartItems()
+    getAuth()
+    getCoupon()
+    // ----------------------------------------------------------------------------------------
+    const radioButtons = document.querySelectorAll('input[name="checkoutPaymentMethod"]');
+
+    radioButtons.forEach(button => {
+      button.addEventListener('change', function () {
+        if (this.checked) {
+          console.log('Selected payment method:', this.id);
+          paymentMeth = this.id
+          console.log('paymentMeth', paymentMeth);
+
+        }
+
+      });
+    });
+    // ----------------------------------------------------------------------------------------
+    // ADD-ORDER
+    async function placeOrder() {
+      try {
+        event.preventDefault()
+        var userName = localStorage.getItem('userInfo.firstname');
+        console.log("userName", userName);
+        if (!selected_address) {
+          Swal.fire({
+            title: "Select Address",
+            text: "",
+            icon: "warning"
+          });
+          return;
+        }
+        if (!paymentMeth) {
+          Swal.fire({
+            title: "Payment Method",
+            text: "Select An Payment option",
+            icon: "warning"
+          });
+          return;
+        }
+
+        const data = {
+          product: cartInfo.cartProducts.map(item => item._id),
+          deliveryAddress: selected_address,
+          cartDetails: selected_address,
+          couponUsed: couponId,
+          PaymentMethod: paymentMeth,
+        }
+
+        console.log("paymentMeth", paymentMeth);
+        console.log("shipping data", data);
+
+        const response = await fetch("http://localhost:5001/user/place-order", {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify(data)
+        });
+
+        if (response.status === 201) {
+          const responseData = await response.json();
+          console.log("placeorder", responseData);
+          console.log("Order placed successfully!");
+
+          // checking COD or NOT ---------------------------------------------------
+          if (paymentMeth != "COD") {
+            initRazorpay(responseData)
+          }
+          else {
+            window.location.href = "http://127.0.0.1:5508/dist/order_placed_COD.html?id=" + responseData._id;
+          }
+
+        } else {
+          console.error("Failed to place order. Status code:", response.status);
+          // Handle other status codes or errors here
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+        // Handle errors here
+      }
+    }
+    // ----------------------------------------------------------------------------------------
+    // RAZORPAY INTEGRATION
+    function initRazorpay(order) {
+      console.log("ldf-varum", order);
+      var options = {
+        "key": "rzp_test_VmZKJXZOFtUsbi",
+        "amount": order.amount,
+        "currency": "INR",
+        "name": "Furniture Emporium",
+        "description": "Pay & Checkout this product, Upgrade your home with F-Empo",
+        "image": "https://drive.google.com/drive/u/0/folders/1KOwhX14k_22o6ElbVMW_kuOAEIckfD3U",
+        "order_id": order.orderId,
+        "handler": function (response) {
+          console.log(response);
+          alert("This step of Payment Succeeded");
+          window.location.href = "http://127.0.0.1:5508/dist/order_success.html";
+        },
+        "prefill": {
+          // Here we are prefilling random contact
+          "contact": "9876543210",
+          // name and email id, so while checkout
+          "name": "Twinkle Sharma",
+          "email": "smtwinkle@gmail.com"
+        },
+        "notes": {
+          "description": "Best product available",
+          "language": "Available in 4 major Languages JAVA, C/C++, Python, Javascript",
+          "access": "This course have Lifetime Access"
+        },
+        "theme": {
+          "color": "#00bcd4"
+        }
+      };
+
+      var razorpayObject = new Razorpay(options);
+      console.log(razorpayObject);
+      razorpayObject.on('payment.failed', function (response) {
+        console.log("payment-failure", response);
+        alert("This step of Payment Failed");
+
+      });
+      razorpayObject.on('payment.success', function (response) {
+        console.log("payment-success", response);
+        alert("Payment Successful");
+
+      });
+
+      razorpayObject.open();
+    }
+
+
+
+    // document.getElementById('pay-button').onclick = function (e) {
+    //   razorpayObject.open();
+    //   e.preventDefault();
+    // }
+
+    // ----------------------------------------------------------------------------------------
+    // LIST-COUPON
+    function getCoupon() {
+
+      fetch('http://localhost:5001/admin/getALLcoupon')
+        .then(response => response.json())
+        .then(data => {
+          coupon_list = data.coupons
+          console.log(data);
+          const roleSelect = document.getElementById("couponDropdown");
+          for (const i of coupon_list) {
+            console.log("i", i);
+            const option = document.createElement("option");
+            couponId = i._id
+            console.log("couponId", couponId);
+            option.value = i.discount;
+            option.textContent = i.code;
+            roleSelect.appendChild(option);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+    }
+
+    function applyCoupon() {
+      var coupon = document.getElementById("couponDropdown").value
+      console.log(coupon);
+      couponvalue = coupon;
+      setTotal(cartInfo)
+    }
+    // ----------------------------------------------------------------------------------------
+
+
+    // Get-Data-From-user
+    async function addshippingdata() {
+      try {
+        // event.preventDefault()
+        const firstName = document.getElementById("firstName").value
+        const lastName = document.getElementById("lastName").value
+        const address = document.getElementById("address").value
+        const country = document.getElementById("country").value
+        const state = document.getElementById("state").value
+        const pincode = document.getElementById("pincode").value
+
+        const data = {
+          firstname: firstName,
+          lastname: lastName,
+          address: address,
+          country: country,
+          state: state,
+          pincode: pincode,
+        }
+        console.log("shipping data", data);
+        const response = await fetch("http://localhost:5001/user/add-address", {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify(data)
+        })
+        const datas = await response.json()
+        console.log("hey", datas);
+        if (response.ok) {
+          location.reload()
+        }
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+
+    // ----------------------------------------------------------------------------------------
+    //  show-cart
+
+    function getCartItems() {
+      console.log("token", token);
+      if (!token.length) {
+        console.error('Authorization token not found');
+
+        return;
+      }
+
+
+      fetch('http://localhost:5001/cart/showcart', {
+        method: 'GET',
+        headers: headers,
+      })
+        .then(response => response.json())
+        .then(data => {
+          cartInfo = data;
+          cart = data.cartProducts;
+
+          products = cart;
+          setData(cart);
+          setTotal(cartInfo);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    // Show-Data
+    function setData(products) {
+      const productnContainer = document.getElementById("cartlisting");
+      // Clear existing content in the banner container
+      productnContainer.innerHTML = "";
+      products.forEach(element => {
+        console.log("element:", element);
+        const productCard = document.createElement("div");
+        productCard.className = "row mx-0 py-4 g-0 border-bottom";
+        productCard.innerHTML = `
+                <div class="col-2 position-relative">
+                  <span class="checkout-item-qty">${element.quantity}</span>
+                  <picture class="d-block border">
+                    <img class="img-fluid" src="${element.images[0]}"
+                      alt="F-Empo">
+                  </picture>
+                </div>
+                <div class="col-9 offset-1">
+                  <div>
+                    <h6 class="justify-content-between d-flex align-items-start mb-2">
+                      ${element.name}
+                      <i class="ri-close-line ms-3"></i>
+                    </h6>
+                    <span class="d-block text-muted fw-bolder text-uppercase fs-9"></span>
+                  </div>
+                  <p class="fw-bolder text-end text-muted m-0">₹${element.price}</p>
+                </div>`;
+
+        productnContainer.appendChild(productCard);
+      });
+    }
+
+    // ----------------------------------------------------------------------------------------
+    // GET AUTH
+    let addresslist = [];
+    function getAuth() {
+      let token = localStorage.getItem('token');
+      let headers = {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      };
+      if (!token) {
+        console.error('User  not logged in');
+        return;
+      }
+      console.log("token:", token, headers);
+      fetch('http://localhost:5001/auth/getuserbyid', {
+        method: 'GET',
+        headers: headers,
+      })
+        .then(response => response.json())
+        .then(data => {
+          const userAdd = data.data
+          getAddress(data.data.addressids)
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    // Get-address
+    function getAddress(ids) {
+      addressList = []
+      ids?.forEach(i => {
+        fetch('http://localhost:5001/user/get-address?addressId=' + i, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.address) {
+              addressList.push(data?.address)
+              setAddressData()
+              console.log(addressList);
+            }
+
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      })
+    }
+
+    // EDIT-ADDRESS FUNCTION
+    function editAddress(addressId) {
+      console.log("Editing address with ID:", addressId);
+
+    }
+    // ----------------------------------------------------------------------------------------
+    // DELETE-ADDRESS FUNCTION
+    function deleteAddress(addressId) {
+      console.log("DELETE address with ID:", addressId);
+    }
+    // ----------------------------------------------------------------------------------------
+    // SET-ADDRESS
+    function setAddressData() {
+      console.log(addressList);
+      const addressContainer = document.getElementById("addresslisting");
+
+      // Clear previous content in the container
+      addressContainer.innerHTML = "";
+
+      // Loop through each address in the array
+      addressList?.forEach(element => {
+        console.log(element);
+
+        // Create a new address card element
+        const addressCard = document.createElement("div");
+        addressCard.classList.add("card", "border", "mb-3");
+
+        // Set inner HTML for the address card
+        addressCard.innerHTML = `
+        <div class="card-body d-flex justify-content-between">
+            <div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="addressSelection" id="address${element.id}" >
+                    <label class="form-check-label" for="address${element.id}">
+                        ${element.firstname.toUpperCase() + " " + element.lastname.toUpperCase() + ","}
+                        
+                    </label>
+                </div>
+                
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-primary me-2" id="editButton"  >Edit</button>
+                <button type="button" class="btn btn-outline-danger"id="deleteButton" onclick="deleteAddress(${element._id})">Delete</button>
+            </div>
+        </div>
+    `;
+
+        // EDIT BUTTON LOGIC------------------------------------------------
+        const editButton = addressCard.querySelector("#editButton");
+        console.log("edit", editButton);
+        editButton.addEventListener("click", () => editAddress(element._id));
+        // DELETE BUTTON LOGIC----------------------------------------------
+        const deleteButton = addressCard.querySelector("#deleteButton");
+        console.log("edit", deleteButton);
+        deleteButton.addEventListener("click", () => deleteAddress(element._id));
+        // Append the address card to the container
+        addressContainer.appendChild(addressCard);
+        // Add event listener to the radio button
+        const radioBtn = addressCard.querySelector(`#address${element.id}`);
+        radioBtn.addEventListener('change', () => {
+          if (radioBtn.checked) {
+            // Handle the selected radio data
+            selected_address = element
+            addressId = element._id
+            console.log(' add IDD:', addressId);
+            console.log('Selected address:', element);
+
+          }
+          else {
+          }
+        });
+      });
+
+      console.log("addressContainer", addressContainer);
+    }
+
+    // total amount - in cart
+    function setTotal(cartInfo) {
+      console.log("cartInfo", cartInfo)
+      const priceContainer = document.getElementById("totalAmount");
+      let totalPrice = cartInfo.price * cartInfo.quantity
+      console.log("totalPrice", totalPrice);
+      console.log("cartInfo.price", cartInfo.price);
+      // console.log("totalPrice",totalPrice);
+      // const priceTot = document.createElement("div");
+      priceContainer.innerHTML = `              <div class="py-4 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <p class="m-0 fw-bolder fs-6">Total</p>
+                  <p class="m-0 fs-6 fw-bolder">₹${cartInfo.totalPrice}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <p class="m-0 fw-bolder fs-6">Discount Amount</p>
+                  <p class="m-0 fs-6 fw-bolder"> - ₹${cartInfo.totalDiscountprice}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center ">
+                  <p class="m-0 fw-bolder fs-6">Coupon Discount</p>
+                  <p class="m-0 fs-6 fw-bolder">₹${couponvalue}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center ">
+                  <p class="m-0 fw-bolder fs-6">Shipping</p>
+                  <p class="m-0 fs-6 fw-bolder">40</p>
+                </div>
+              </div>
+              <div class="py-4 border-bottom">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="m-0 fw-bold fs-5">Grand Total</p>
+                    <span class="text-muted small"></span>
+                  </div>
+                  <p class="m-0 fs-5 fw-bold">₹${cartInfo.grandTotal - couponvalue}</p>
+                </div>
+              </div>`;
+
+      priceContainer.appendChild(priceTot);
+    }
+
+    // ----------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------
+
+  </script>
+</body>
+
+</html>

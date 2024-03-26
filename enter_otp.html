@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Head -->
+
+<head>
+  <!-- Page Meta Tags-->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+
+  <!-- Custom Google Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Roboto:wght@300;400;700&display=auto"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+  <link rel="mask-icon" href="./assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="./assets/css/libs.bundle.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
+
+  <!-- Fix for custom scrollbar if JS is disabled-->
+  <noscript>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .password-reset-container {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
+      }
+
+      .password-reset-container h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .password-reset-container p {
+        text-align: center;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .btn {
+        display: inline-block;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 4px;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+        cursor: pointer;
+      }
+
+      .btn-dark {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #343a40;
+      }
+
+      .btn-dark:hover {
+        background-color: #23272b;
+        border-color: #1d2124;
+      }
+
+      .btn-dark:disabled {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        cursor: not-allowed;
+      }
+
+      /**
+          * Reinstate scrolling for non-JS clients
+          */
+      .simplebar-content-wrapper {
+        overflow: auto;
+      }
+
+      .errorMessage {
+      color: red;        /* Set the text color to red */
+      font-weight: bold;
+      }
+    </style>
+  </noscript>
+
+  <!-- Page Title -->
+  <title>Furniture Emporium</title>
+
+</head>
+
+<body class=" bg-light">
+
+  <!-- Main Section-->
+  <section class="mt-0 overflow-hidden  vh-100 d-flex justify-content-center align-items-center p-4">
+    <!-- Page Content Goes Here -->
+
+    <!-- Login Form-->
+    <div class="col col-md-8 col-lg-6 col-xxl-5">
+      <!-- Logo-->
+      <a class="navbar-brand fw-bold fs-3 flex-shrink-0 order-0 align-self-center justify-content-center d-flex mx-0 px-0"
+        href="./index.html">
+        <div class="d-flex align-items-center">
+          <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+            <path
+              d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+              fill="currentColor" fill-rule="evenodd" />
+          </svg>
+        </div>
+      </a>
+      <!-- / Logo-->
+      <div class="password-reset-container">
+        <h1>Enter OTP</h1>
+        <!-- <p>Please enter your OTP below</p> -->
+        <form onsubmit="otpverification()" id="resetForm">
+          <div class="form-group">
+            <label for="otp" class="form-label">Enter OTP</label>
+            <input type="text" class="form-control" id="otp" placeholder="Enter the six-digit OTP" required>
+            <span id="errorMessage" class="errorMessage" style="color: red; font-weight: bold; display: none;">OTP Mismatch</span>
+          </div>
+          <button onclick="otpverification()" type="submit" class="btn btn-dark d-block w-100 my-4">Verify OTP</button>
+          
+        </form>
+      </div>
+
+    </div>
+    <!-- / Login Form-->
+
+    <!-- /Page Content -->
+  </section>
+  <!-- / Main Section-->
+
+
+  <!-- Theme JS -->
+  <!-- Vendor JS -->
+  <script src="./assets/js/vendor.bundle.js"></script>
+
+  <!-- Theme JS -->
+  <script src="./assets/js/theme.bundle.js"></script>
+  <script>
+    async function otpverification() {
+      console.log("hello")
+      try {
+        event.preventDefault()
+        const otp = document.getElementById("otp").value
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get("email");
+        console.log("email", email);
+        if (!email.length) {
+          alert("User Not found")
+          return
+        }
+        const data = {
+          otp: otp,
+          userEmail: email
+        }
+        console.log("otp and email", data);
+
+        const response = await fetch("http://localhost:5001/auth/otpverification", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+
+          },
+
+          body: JSON.stringify(data),
+          credentials: "include",
+
+        })
+        const datas = await response.json()
+        if (datas.statusCode === 200) {
+          const email = datas.email;
+          window.location.href = `http://127.0.0.1:5508/dist/reset_password.html?email=${email}`;
+        } else {
+          console.error('Unexpected status code:', datas.statusCode);
+          errorMess()
+        }
+
+      } catch (error) {
+        console.log(error);
+      }
+      function errorMess(){
+        const errors=document.getElementById("errorMessage")
+        errors.style.display="block"
+      }
+
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

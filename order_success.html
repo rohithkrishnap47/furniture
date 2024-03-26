@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <!-- Include SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+
+    <!-- Include SweetAlert2 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+    <title>F-Empo | Order Success</title>
+</head>
+
+<body>
+    <!-- NAV BAR -->
+
+    <nav class="bg-white  w-full z-20 top-0 start-0 border-b border-gray-200 ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                    <path
+                        d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                        fill="currentColor" fill-rule="evenodd" />
+                </svg>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <!-- <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
+                        started</button> -->
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <a href="./index.html">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                        <path
+                            d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                            fill="currentColor" fill-rule="evenodd" />
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- NAV BAR -->
+
+    <section class="flex items-center py-16 bg-gray-50 font-poppins" style="background-color: #f5f5dc;">
+        <div
+            class="justify-center flex-1 max-w-4xl px-6 py-6 mx-auto mt-8 rounded-md shadow-md bg-white lg:py-10 lg:px-10">
+            <div class="p-6 md:mx-auto">
+                <p class="text-lg text-gray-500">ORDER-NO: : order_NXFRRdIP1660fz</p>
+
+                <svg viewBox="0 0 24 24" class="text-green-600 w-16 h-16 mx-auto my-6">
+                    <path fill="currentColor"
+                        d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                    </path>
+                </svg>
+
+                <div class="text-center">
+                    <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Done!</h3>
+                    <p class="text-gray-600 my-2">Thank you for completing your secure online payment.</p>
+                    <p> Have a great day! </p>
+                </div>
+            </div>
+            <div class="max-w-4xl mx-auto mb-10 mt-10">
+                <!-- <h2 class="mb-4 text-xl font-medium">What you ordered:</h2> -->
+                <!--product-->
+                <!-- <div class="p-10 mb-8 bg-white rounded-md shadow sm:flex sm:items-center xl:py-5 xl:px-12"> -->
+                    <!-- <a href="#" class="mr-6 md:mr-12">
+                        <img class="w-full lg:w-[80px] h-[200px] lg:h-[80px] object-cover mx-auto mb-6 sm:mb-0"
+                            src="https://i.postimg.cc/YS2pPP8k/white-denim-jacket-front-view-streetwear-fashion.jpg"
+                            alt="dress">
+                    </a> -->
+                    <!-- <div>
+                        <a class="inline-block mb-1 text-lg font-medium hover:underline" href="#">White jacket for
+                            men</a>
+                        <div class="flex flex-wrap">
+                            <p class="mr-4 text-sm font-medium">
+                                <span>Color:</span>
+                                <span class="ml-2 text-gray-400">Silver</span>
+                            </p>
+                            <p class="mr-4 text-sm font-medium">
+                                <span>Size:</span>
+                                <span class="ml-2 text-gray-400">medium</span>
+                            </p>
+                            <p class="mr-4 text-sm font-medium">
+                                <span>Style:</span>
+                                <span class="ml-2 text-gray-400">Uk minimal design</span>
+                            </p>
+                            <p class="text-sm font-medium">
+                                <span>Qty:</span>
+                                <span class="ml-2 text-gray-400">1</span>
+                            </p>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
+                <!--product closes-->
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <!-- <h2 class="mb-4 text-xl font-medium">Order Details:</h2>
+                <div class="grid grid-cols-1 gap-8 mb-10 lg:grid-cols-3">
+                    <div
+                        class="flex items-center justify-between px-10 py-3 font-medium leading-8 bg-white rounded-md shadow font-heading">
+                        <span>Shipping</span>
+                        <span class="flex items-center">
+                            <span class="ml-3 mr-1 text-sm">Rs.</span>
+                            <span class="text-xl">4,000</span>
+                        </span>
+                    </div>
+                    <div
+                        class="flex items-center justify-between px-10 py-3 font-medium leading-8 bg-white rounded-md shadow font-heading">
+                        <span>Total</span>
+                        <span class="flex items-center text-blue-500">
+                            <span class="ml-3 mr-1 text-sm">Rs.</span>
+                            <span class="text-xl">7,000</span>
+                        </span>
+                    </div>
+                </div> -->
+
+                <div class="flex flex-wrap items-center justify-between gap-4 ">
+                    <div class="py-10 text-center m-6">
+                        <a href="/brepublic/landing"
+                            class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
+                            <button type="button">
+                                GO BACK
+                            </button>
+                        </a>
+                    </div>
+                    <div class="py-10 text-center m-6">
+                        <button onclick="makePDF()" id="downloadButton"
+                            class="px-12 bg-green-600 hover:bg-green-500 text-white font-semibold py-3" type="button">
+                            DOWNLOAD INVOICE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative overflow-hidden bg-white py-8">
+        <div class="container relative z-10 mx-auto px-4">
+            <div class="-m-8 flex flex-wrap items-center justify-between">
+                <div class="w-auto p-8">
+                    <a href="./index.html">
+                        <div class="inline-flex items-center">
+                            <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                                <path
+                                    d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                                    fill="currentColor" fill-rule="evenodd" />
+                            </svg>
+                            <span class="ml-4 text-lg font-bold">Furniture Emporium</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="w-auto p-8">
+                    <ul class="-m-5 flex flex-wrap items-center">
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="./privacypolicy.html">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="./returnpolicy.html">
+                                Return Policy
+                            </a>
+                        </li>
+                        <li class="p-5">
+                            <a class="font-medium text-gray-600 hover:text-gray-700" href="./contact-us.html">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-auto p-8">
+                    <div class="-m-1.5 flex flex-wrap">
+                        <div class="w-auto p-1.5">
+                            <a href="./index.html">
+                                <div class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400"
+                                    style="background-color: #f5f5dc;">
+                                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M5.55736 5.2L5.55736 3.88C5.55736 3.308 5.69631 3 6.66894 3H7.87315V0.800003L6.02052 0.800003C3.70473 0.800003 2.77841 2.252 2.77841 3.88V5.2H0.925781L0.925781 7.4H2.77841L2.77841 14H5.55736L5.55736 7.4H7.59526L7.87315 5.2H5.55736Z"
+                                            fill="#27272A"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w-auto p-1.5">
+                            <a href="./index.html">
+                                <div class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400"
+                                    style="background-color: #f5f5dc;">
+                                    <svg width="14" height="11" viewBox="0 0 14 11" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.6655 1.39641C13.1901 1.60149 12.6728 1.74907 12.1399 1.80656C12.6931 1.47788 13.1074 0.958619 13.3051 0.346204C12.7859 0.655036 12.2172 0.871595 11.6241 0.986274C11.3762 0.721276 11.0764 0.510168 10.7434 0.366102C10.4104 0.222036 10.0512 0.1481 9.68836 0.148902C8.22024 0.148902 7.03953 1.33893 7.03953 2.79928C7.03953 3.00436 7.06439 3.20943 7.10478 3.40673C4.90649 3.29177 2.94589 2.24155 1.64246 0.633614C1.40495 1.03927 1.2805 1.50117 1.28203 1.97123C1.28203 2.89094 1.74965 3.70191 2.46274 4.17885C2.0425 4.1623 1.63211 4.0468 1.26494 3.84173V3.87435C1.26494 5.16226 2.17533 6.22956 3.38866 6.47502C3.16084 6.5342 2.92649 6.56447 2.69111 6.56513C2.51866 6.56513 2.35554 6.54804 2.19086 6.52474C2.52643 7.57495 3.50362 8.33775 4.66724 8.3626C3.75685 9.07569 2.61654 9.49515 1.37835 9.49515C1.15619 9.49515 0.951119 9.48738 0.738281 9.46253C1.91278 10.216 3.30632 10.651 4.80706 10.651C9.67904 10.651 12.345 6.61484 12.345 3.11155C12.345 2.99659 12.345 2.88162 12.3372 2.76666C12.853 2.38914 13.3051 1.92152 13.6655 1.39641Z"
+                                            fill="#27272A"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w-auto p-1.5">
+                            <a href="./index.html">
+                                <div class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400"
+                                    style="background-color: #f5f5dc;">
+                                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.00094 0.360001C6.09046 0.360001 5.85022 0.368801 5.09958 0.402241C4.34894 0.437441 3.83766 0.555361 3.38974 0.729601C2.9199 0.906321 2.49433 1.18353 2.14278 1.54184C1.78468 1.89357 1.50751 2.31909 1.33054 2.7888C1.1563 3.23584 1.0375 3.748 1.00318 4.496C0.969738 5.2484 0.960937 5.48776 0.960937 7.40088C0.960937 9.31224 0.969738 9.5516 1.00318 10.3022C1.03838 11.052 1.1563 11.5633 1.33054 12.0112C1.51094 12.4741 1.75118 12.8666 2.14278 13.2582C2.5335 13.6498 2.92598 13.8909 3.38886 14.0704C3.83766 14.2446 4.34806 14.3634 5.09782 14.3978C5.84934 14.4312 6.0887 14.44 8.00094 14.44C9.91318 14.44 10.1517 14.4312 10.9032 14.3978C11.6521 14.3626 12.1651 14.2446 12.613 14.0704C13.0826 13.8936 13.5078 13.6164 13.8591 13.2582C14.2507 12.8666 14.4909 12.4741 14.6713 12.0112C14.8447 11.5633 14.9635 11.052 14.9987 10.3022C15.0321 9.5516 15.0409 9.31224 15.0409 7.4C15.0409 5.48776 15.0321 5.2484 14.9987 4.49688C14.9635 3.748 14.8447 3.23584 14.6713 2.7888C14.4944 2.31908 14.2172 1.89356 13.8591 1.54184C13.5077 1.1834 13.0821 0.906169 12.6121 0.729601C12.1633 0.555361 11.6512 0.436561 10.9023 0.402241C10.1508 0.368801 9.9123 0.360001 7.99918 0.360001H8.00182H8.00094ZM7.36998 1.62896H8.00182C9.8815 1.62896 10.1041 1.63512 10.846 1.66944C11.5324 1.70024 11.9055 1.81552 12.2886 2.09168C12.6815 2.37568 12.9958 2.75928 13.1614 3.21128C13.3418 3.68136 13.4234 4.29616 13.4592 5.62336C13.491 6.87416 13.4998 7.0864 13.4998 7.4C13.4998 7.71312 13.491 7.92536 13.4592 9.17608C13.4258 10.4248 13.3434 11.0392 13.1614 11.5092C12.9954 11.9616 12.6813 12.3452 12.2886 12.6292C11.9055 12.9054 11.5324 13.0208 10.846 13.0516C10.1041 13.0859 9.8815 13.092 8.00182 13.092H7.36998L7.36998 1.62896Z"
+                                            fill="#27272A"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script type="text/javascript">
+    window.html2canvas = html2canvas;
+    window.jsPDF = window.jspdf.jsPDF;
+
+    function makePDF() {
+        // Use html2canvas to capture the current page
+        html2canvas(document.body).then(function (canvas) {
+            var doc = new jsPDF();
+            var imgWidth = 210; // Adjust as needed
+            var scaleFactor = imgWidth / canvas.width;
+            var imgHeight = canvas.height * scaleFactor;
+
+            // Add the captured HTML content as an image to the PDF
+            doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+
+            // Save the PDF
+            doc.save("current_page.pdf");
+        });
+    }
+
+
+</script>
+<!-- <script>
+    function printinvoice() {
+        var doc = new jsPDF();
+
+        // Add HTML content from the current screen to the PDF
+        doc.html(document.body, {
+            callback: function (pdf) {
+                // Save the PDF file with a specific name
+                pdf.save('invoice.pdf');
+            }
+        });
+    }
+</script> -->
+
+</html>

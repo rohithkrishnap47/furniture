@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <!-- Include SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+
+    <!-- Include SweetAlert2 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <title>Furnitue Emporium | User </title>
+    <style>
+        @media screen and (max-width: 640px) {
+
+            .footer .p-8:not(:first-child),
+            .footer ul {
+                display: none;
+            }
+        }
+
+        .login-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            position: relative;
+            /* Fixed position at the bottom of the viewport */
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff;
+            /* Adjust as needed */
+            padding: 20px 0;
+            /* Adjust padding as needed */
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            /* Optional: add a shadow */
+        }
+
+        .content {
+            min-height: calc(100vh - 100px);
+            /* Calculate the height of the viewport minus the height of the footer */
+            /* Adjust as needed based on your footer's height */
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV BAR -->
+
+    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                    <path
+                        d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                        fill="currentColor" fill-rule="evenodd" />
+                </svg>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <!-- <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
+                    started</button> -->
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <a href="./index.html">
+                        <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                            <path
+                                d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                                fill="currentColor" fill-rule="evenodd" />
+                        </svg>
+                    </a>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <a href="./index.html">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                        <path
+                            d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                            fill="currentColor" fill-rule="evenodd" />
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- NAV BAR -->
+    <div class="content bg-gray-100 p-8">
+        <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4 mt-1.5 w-full h-full">
+            <div class="w-full flex flex-col 2xl:w-1/3 mt-10">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xl text-gray-900 font-bold">Personal Info</h4>
+                        <!-- Button to trigger the modal -->
+                        <!-- <button id="editButton"
+                            class="text-blue-500 hover:text-blue-700 focus:outline-none bg-transparent border border-blue-500 hover:bg-blue-500 hover:text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+                            Edit
+                        </button> -->
+                        <!-- <button onclick="logoutUser()"
+                            class="text-blue-500 hover:text-blue-700 focus:outline-none bg-transparent border border-blue-500 hover:bg-blue-500 hover:text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+                            LOG OUT
+                        </button> -->
+
+                        <!-- Modal -->
+                        <div id="detailsModal"
+                            class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 hidden">
+                            <div class="bg-white p-6 rounded-lg w-96">
+                                <h2 class="text-lg font-semibold text-gray-900 mb-4">Personal Details</h2>
+                                <form id="userDetailsForm">
+                                    <ul class="text-gray-700">
+                                        <li class="flex  py-2">
+                                            <span class="font-bold w-24">First name:</span>
+                                            <input type="text" id="firstName" name="firstName"
+                                                class="text-gray-700 border border-gray-300 px-3 py-1 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        </li>
+                                        <li class="flex   py-2">
+                                            <span class="font-bold w-24">Last name:</span>
+                                            <input type="text" id="lastName" name="lastName"
+                                                class="text-gray-700 border border-gray-300 px-3 py-1 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        </li>
+                                        <li class="flex   py-2">
+                                            <span class="font-bold w-24">Email:</span>
+                                            <input type="text" id="emailAddress" name="emailAddress"
+                                                class="text-gray-700 border border-gray-300 px-3 py-1 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        </li>
+                                        <li class="flex   py-2">
+                                            <span class="font-bold w-24">Mobile:</span>
+                                            <input type="text" id="mobile" name="mobile"
+                                                class="text-gray-700 border border-gray-300 px-3 py-1 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                        </li>
+                                    </ul>
+                                    <div class="flex justify-between mx-8">
+                                        <button id="closeModalButton"
+                                            class="mt-4 mr-2 text-sm text-red-300 hover:text-red-600 px-4 py-2 rounded-md border border-red-400 hover:border-red-600 focus:outline-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+
+                                        <button type="submit" id="okButton"
+                                            class="mt-4 text-sm text-green-400 hover:text-green-600 px-4 py-2 rounded-md border border-green-400 hover:border-green-600 focus:outline-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m4.5 12.75 6 6 9-13.5" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- modal ends here -->
+
+
+
+                    </div>
+                    <!-- modal content -->
+
+                    <div id="authentication-modal" tabindex="-1" aria-hidden="true"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    </div>
+
+
+                    <div id="userProfileContainer">
+                        <ul class="mt-2 text-gray-700">
+                            <li class="flex border-y py-2">
+                                <span class="font-bold w-24">First Name:</span>
+                                <span id="userFirstname" class="text-gray-700"></span>
+                            </li>
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-24">Last Name:</span>
+                                <span id="userLastname" class="text-gray-700"></span>
+                            </li>
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-24">Email:</span>
+                                <span id="userMail" class="text-gray-700"></span>
+                            </li>
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-24">Mobile:</span>
+                                <span id="userMobile" class="text-gray-700"></span>
+                            </li>
+                            <li class="flex border-b py-2">
+                                <span class="font-bold w-24">Joined:</span>
+                                <span id="joinedDate" class="text-gray-700"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="flex flex-col w-full 2xl:w-2/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl mt-10 p-8">
+                    <h4 class="text-xl text-gray-900 font-bold">Orders</h4>
+
+
+                    <!-- ORDERS LIST.1 -->
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        ORDER ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        <div class="flex items-center">
+                                            Ordered Date
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        <div class="flex items-center">
+                                            Delivery Expected
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        <div class="flex items-center">
+                                            Delivery Status
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        <div class="flex items-center">
+                                            ACTION
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-body"></tbody>
+                            <div id="lottie-container"></div>
+                            <!-- <tbody>
+                                <tr class="bg-white border-b" id="orderdetails">
+                                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        Apple MacBook Pro 17"
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Silver
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Laptop
+                                    </td>
+                                    <td class="whitespace-nowrap px-4 py-4">
+                                        <span
+                                            class="inline-flex rounded-full bg-green-600 px-2 text-xs font-semibold leading-5 text-white">
+                                            Delivered
+                                        </span>
+                                        <span
+                                            class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                                            Pending
+                                        </span>
+                                        <span
+                                            class="inline-flex rounded-full bg-red-500 px-2 text-xs font-semibold leading-5 text-white">
+                                            Cancelled
+                                        </span>
+                                        <span
+                                            class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                                            Processing
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 ">
+                                        <button id="cancelButton" onclick="confirmCancel()"
+                                            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                            Cancel
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody> -->
+                        </table>
+                    </div>
+                    <!-- ORDERS LIST.2 -->
+                    <!-- <div class="mt-6 flex flex-col">
+                        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                <div class="overflow-hidden border border-gray-200 md:rounded-lg">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col"
+                                                    class="px-4 py-3.5 text-left text-sm font-normal text-gray-700">
+                                                    <span>Employee</span>
+                                                </th>
+                                                <th scope="col"
+                                                    class="px-12 py-3.5 text-left text-sm font-normal text-gray-700">
+                                                    Title
+                                                </th>
+                                                <th scope="col"
+                                                    class="px-4 py-3.5 text-left text-sm font-normal text-gray-700">
+                                                    Status
+                                                </th>
+                                                <th scope="col"
+                                                    class="px-4 py-3.5 text-left text-sm font-normal text-gray-700">
+                                                    Role
+                                                </th>
+                                                <th scope="col" class="relative px-4 py-3.5">
+                                                    <span class="sr-only">Edit</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200 bg-white">
+                                            <tr>
+                                                <td class="whitespace-nowrap px-4 py-4">
+                                                    <div class="flex items-center">
+                                                        <div class="h-10 w-10 flex-shrink-0">
+                                                            <img class="h-10 w-10 rounded-full object-cover"
+                                                                src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1160&amp;q=80"
+                                                                alt="" />
+                                                        </div>
+                                                        <div class="ml-4">
+                                                            <div class="text-sm font-medium text-gray-900">
+                                                                John Doe
+                                                            </div>
+                                                            <div class="text-sm text-gray-700">john@devui.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="whitespace-nowrap px-12 py-4">
+                                                    <div class="text-sm text-gray-900 ">Front-end Developer</div>
+                                                    <div class="text-sm text-gray-700">Engineering</div>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-4">
+                                                    <span
+                                                        class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                                                        Active
+                                                    </span>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
+                                                    Developer
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
+                                                    <a href="#" class="text-gray-700">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="whitespace-nowrap px-4 py-4">
+                                                    <div class="flex items-center">
+                                                        <div class="h-10 w-10 flex-shrink-0">
+                                                            <img class="h-10 w-10 rounded-full object-cover"
+                                                                src="https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=928&amp;q=80"
+                                                                alt="" />
+                                                        </div>
+                                                        <div class="ml-4">
+                                                            <div class="text-sm font-medium text-gray-900">
+                                                                Jane Doe
+                                                            </div>
+                                                            <div class="text-sm text-gray-700">jane@devui.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="whitespace-nowrap px-12 py-4">
+                                                    <div class="text-sm text-gray-900 ">Back-end Developer</div>
+                                                    <div class="text-sm text-gray-700">Engineering</div>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-4">
+                                                    <span
+                                                        class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                                                        Active
+                                                    </span>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
+                                                    CTO
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
+                                                    <a href="#" class="text-gray-700">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- // ORDERS LIST // -->
+                    <div class="mt-4">
+                        <!-- <canvas id="verticalBarChart"
+                            style="display: block; box-sizing: border-box; height: 414px; width: 828px;" width="1656"
+                            height="828"></canvas> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <!-- footer -->
+        <footer class="footer" style="padding: 10px 0;">
+            <section class="relative overflow-hidden bg-white py-8">
+                <div class="container relative z-10 mx-auto px-4">
+                    <div class="-m-8 flex flex-wrap items-center justify-between">
+                        <div class="w-auto p-8">
+                            <a href="./index.html">
+                                <div class="inline-flex items-center">
+
+                                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                                        <path
+                                            d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                                            fill="currentColor" fill-rule="evenodd" />
+                                    </svg>
+
+                                    <span class="ml-4 text-lg font-bold">Furniture Emporium</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w-auto p-8">
+                            <ul class="-m-5 flex flex-wrap items-center">
+                                <li class="p-5">
+                                    <a class="font-medium text-gray-600 hover:text-gray-700"
+                                        href="./privacypolicy.html">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li class="p-5">
+                                    <a class="font-medium text-gray-600 hover:text-gray-700" href="./returnpolicy.html">
+                                        Return Policy
+                                    </a>
+                                </li>
+                                <li class="p-5">
+                                    <a class="font-medium text-gray-600 hover:text-gray-700" href="./contact-us.html">
+                                        Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="w-auto p-8">
+                            <div class="-m-1.5 flex flex-wrap">
+                                <div class="w-auto p-1.5">
+                                    <a href="./index.html">
+                                        <div
+                                            class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
+                                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M5.55736 5.2L5.55736 3.88C5.55736 3.308 5.69631 3 6.66894 3H7.87315V0.800003L6.02052 0.800003C3.70473 0.800003 2.77841 2.252 2.77841 3.88V5.2H0.925781L0.925781 7.4H2.77841L2.77841 14H5.55736L5.55736 7.4H7.59526L7.87315 5.2H5.55736Z"
+                                                    fill="#27272A"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="w-auto p-1.5">
+                                    <a href="./index.html">
+                                        <div
+                                            class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
+                                            <svg width="14" height="11" viewBox="0 0 14 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M13.6655 1.39641C13.1901 1.60149 12.6728 1.74907 12.1399 1.80656C12.6931 1.47788 13.1074 0.958619 13.3051 0.346204C12.7859 0.655036 12.2172 0.871595 11.6241 0.986274C11.3762 0.721276 11.0764 0.510168 10.7434 0.366102C10.4104 0.222036 10.0512 0.1481 9.68836 0.148902C8.22024 0.148902 7.03953 1.33893 7.03953 2.79928C7.03953 3.00436 7.06439 3.20943 7.10478 3.40673C4.90649 3.29177 2.94589 2.24155 1.64246 0.633614C1.40495 1.03927 1.2805 1.50117 1.28203 1.97123C1.28203 2.89094 1.74965 3.70191 2.46274 4.17885C2.0425 4.1623 1.63211 4.0468 1.26494 3.84173V3.87435C1.26494 5.16226 2.17533 6.22956 3.38866 6.47502C3.16084 6.5342 2.92649 6.56447 2.69111 6.56513C2.51866 6.56513 2.35554 6.54804 2.19086 6.52474C2.52643 7.57495 3.50362 8.33775 4.66724 8.3626C3.75685 9.07569 2.61654 9.49515 1.37835 9.49515C1.15619 9.49515 0.951119 9.48738 0.738281 9.46253C1.91278 10.216 3.30632 10.651 4.80706 10.651C9.67904 10.651 12.345 6.61484 12.345 3.11155C12.345 2.99659 12.345 2.88162 12.3372 2.76666C12.853 2.38914 13.3051 1.92152 13.6655 1.39641Z"
+                                                    fill="#27272A"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="w-auto p-1.5">
+                                    <a href="./index.html">
+                                        <div
+                                            class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
+                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.00094 0.360001C6.09046 0.360001 5.85022 0.368801 5.09958 0.402241C4.34894 0.437441 3.83766 0.555361 3.38974 0.729601C2.9199 0.906321 2.49433 1.18353 2.14278 1.54184C1.78468 1.89357 1.50751 2.31909 1.33054 2.7888C1.1563 3.23584 1.0375 3.748 1.00318 4.496C0.969738 5.2484 0.960937 5.48776 0.960937 7.40088C0.960937 9.31224 0.969738 9.5516 1.00318 10.3022C1.03838 11.052 1.1563 11.5633 1.33054 12.0112C1.51094 12.4741 1.75118 12.8666 2.14278 13.2582C2.5335 13.6498 2.92598 13.8909 3.38886 14.0704C3.83766 14.2446 4.34806 14.3634 5.09782 14.3978C5.84934 14.4312 6.0887 14.44 8.00094 14.44C9.91318 14.44 10.1517 14.4312 10.9032 14.3978C11.6521 14.3626 12.1651 14.2446 12.613 14.0704C13.0826 13.8936 13.5078 13.6164 13.8591 13.2582C14.2507 12.8666 14.4909 12.4741 14.6713 12.0112C14.8447 11.5633 14.9635 11.052 14.9987 10.3022C15.0321 9.5516 15.0409 9.31224 15.0409 7.4C15.0409 5.48776 15.0321 5.2484 14.9987 4.49688C14.9635 3.748 14.8447 3.23584 14.6713 2.7888C14.4944 2.31908 14.2172 1.89356 13.8591 1.54184C13.5077 1.1834 13.0821 0.906169 12.6121 0.729601C12.1633 0.555361 11.6512 0.436561 10.9023 0.402241C10.1508 0.368801 9.9123 0.360001 7.99918 0.360001H8.00182H8.00094ZM7.36998 1.62896H8.00182C9.8815 1.62896 10.1041 1.63512 10.846 1.66944C11.5324 1.70024 11.9055 1.81552 12.1537 1.91144C12.4819 2.03904 12.7169 2.19216 12.9633 2.43856C13.2097 2.68496 13.3619 2.91904 13.4895 3.24816C13.5863 3.49544 13.7007 3.86856 13.7315 4.55496C13.7658 5.2968 13.7729 5.51944 13.7729 7.39824C13.7729 9.27704 13.7658 9.50056 13.7315 10.2424C13.7007 10.9288 13.5854 11.301 13.4895 11.5492C13.3766 11.8549 13.1965 12.1313 12.9624 12.3579C12.716 12.6043 12.4819 12.7566 12.1528 12.8842C11.9064 12.981 11.5333 13.0954 10.846 13.127C10.1041 13.1605 9.8815 13.1684 8.00182 13.1684C6.12214 13.1684 5.89862 13.1605 5.15678 13.127C4.47038 13.0954 4.09814 12.981 3.84998 12.8842C3.54418 12.7715 3.26753 12.5916 3.04038 12.3579C2.80608 12.1309 2.62565 11.8543 2.51238 11.5483C2.41646 11.301 2.30118 10.9279 2.27038 10.2415C2.23694 9.49968 2.2299 9.27704 2.2299 7.39648C2.2299 5.5168 2.23694 5.29504 2.27038 4.5532C2.30206 3.8668 2.41646 3.49368 2.51326 3.24552C2.64086 2.91728 2.79398 2.68232 3.04038 2.43592C3.28678 2.18952 3.52086 2.03728 3.84998 1.90968C4.09814 1.81288 4.47038 1.69848 5.15678 1.6668C5.80622 1.63688 6.0579 1.62808 7.36998 1.6272V1.62896ZM11.7594 2.7976C11.6485 2.7976 11.5386 2.81945 11.4361 2.86191C11.3336 2.90436 11.2405 2.96659 11.1621 3.04504C11.0836 3.12348 11.0214 3.21661 10.9789 3.31911C10.9365 3.42161 10.9146 3.53146 10.9146 3.6424C10.9146 3.75334 10.9365 3.8632 10.9789 3.96569C11.0214 4.06819 11.0836 4.16132 11.1621 4.23976C11.2405 4.31821 11.3336 4.38044 11.4361 4.42289C11.5386 4.46535 11.6485 4.4872 11.7594 4.4872C11.9835 4.4872 12.1984 4.3982 12.3568 4.23976C12.5152 4.08133 12.6042 3.86646 12.6042 3.6424C12.6042 3.41835 12.5152 3.20347 12.3568 3.04504C12.1984 2.88661 11.9835 2.7976 11.7594 2.7976ZM8.00182 3.78496C7.52228 3.77748 7.04604 3.86547 6.60084 4.0438C6.15563 4.22214 5.75035 4.48726 5.40859 4.82373C5.06683 5.1602 4.79542 5.5613 4.61016 6.00367C4.4249 6.44604 4.32949 6.92084 4.32949 7.40044C4.32949 7.88004 4.4249 8.35484 4.61016 8.79721C4.79542 9.23958 5.06683 9.64068 5.40859 9.97715C5.75035 10.3136 6.15563 10.5787 6.60084 10.7571C7.04604 10.9354 7.52228 11.0234 8.00182 11.0159C8.95093 11.0011 9.85616 10.6137 10.5221 9.93726C11.1881 9.26084 11.5613 8.34967 11.5613 7.40044C11.5613 6.45121 11.1881 5.54004 10.5221 4.86362C9.85616 4.1872 8.95093 3.79977 8.00182 3.78496ZM8.00182 5.05304C8.62427 5.05304 9.22123 5.30031 9.66137 5.74045C10.1015 6.18059 10.3488 6.77755 10.3488 7.4C10.3488 8.02245 10.1015 8.61941 9.66137 9.05955C9.22123 9.49969 8.62427 9.74696 8.00182 9.74696C7.37937 9.74696 6.78241 9.49969 6.34227 9.05955C5.90213 8.61941 5.65486 8.02245 5.65486 7.4C5.65486 6.77755 5.90213 6.18059 6.34227 5.74045C6.78241 5.30031 7.37937 5.05304 8.00182 5.05304Z"
+                                                    fill="#27272A"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+    <script>
+        var token = localStorage.getItem('token');
+        var headers = {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        };
+
+        // LOGOUT-Function
+        // function logoutUser() {
+        //     localStorage.removeItem('token');
+
+        //     window.location.href = 'login.html';
+        // }
+
+        // SHOW-USER_DETAILS
+        const userFirstname = document.getElementById("userFirstname");
+        const userLastname = document.getElementById("userLastname");
+        const userMail = document.getElementById("userMail");
+        const userMobile = document.getElementById("userMobile");
+        const joined = document.getElementById("joinedDate");
+
+        // rearranging date as DD-MM-YYYY formatttttt
+        function formatDate(dateString) {
+            if (!dateString) return ''; // Return empty string if dateString is null or undefined
+            const dateParts = dateString.slice(0, 10).split('-'); // Split the date into parts
+            return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; // Rearrange the parts
+        }
+        // to get day count till date
+        function daysSince(dateString) {
+            if (!dateString) return '';
+            const joinedDate = new Date(dateString);
+            const currentDate = new Date();
+            const diffTime = Math.abs(currentDate - joinedDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return `${diffDays} days ago`;
+        }
+
+        checkAuthenticated()
+        function checkAuthenticated() {
+            const token = localStorage.getItem('token');
+            const userProfileContainer = document.getElementById('userProfileContainer');
+
+            if (token) {
+                const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+                document.getElementById('userFirstname').textContent = `${userInfo?.firstname}`.toUpperCase();
+                document.getElementById('userLastname').textContent = `${userInfo?.lastname}`.toUpperCase();
+                document.getElementById('userMail').textContent = `${userInfo?.emailaddress}`;
+                document.getElementById('userMobile').textContent = `${userInfo?.mobile}`;
+                document.getElementById('joinedDate').textContent = formatDate(userInfo?.joined) + ` (${daysSince(userInfo?.joined)})`;
+            } else {
+                // Token not found, show login button
+                const loginButton = document.createElement('button');
+                loginButton.textContent = 'Login';
+                loginButton.classList.add('login-button'); // Add the class 'login-button' to the button
+
+                loginButton.addEventListener('click', () => {
+                    window.location.href = 'http://127.0.0.1:5508/dist/login.html';
+                });
+
+                userProfileContainer.appendChild(loginButton);
+            }
+        }
+
+
+        // ----------------------------------------------------------------
+        // CANCEL-ORDER
+        function confirmCancel() {
+            Swal.fire({
+                title: 'Do you want to cancel your order?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, cancel it!',
+                cancelButtonText: 'No, keep it'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log('Order cancelled for product with _id:', selectedOrderid);
+                    orderCancel(selectedOrderid)
+                } else {
+                    console.log('Cancellation declined for product with _id:', selectedOrderid);
+                }
+            });
+        }
+
+        // ORDER-CANCEL-API
+        function orderCancel(selectedOrderid) {
+            fetch('http://localhost:5001/user/delete-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderId: selectedOrderid })
+            })
+                .then(response => {
+                })
+                .catch(error => {
+                });
+        }
+
+        // DISABLE-BUTTON
+        function disableCancelButton() {
+            var cancelButton = document.getElementById('cancelButton');
+            cancelButton.disabled = true;
+            // You can also change the style of the button to indicate it's disabled if needed
+            cancelButton.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+        // ----------------------------------------------------------------
+        // Get the button and modal elements
+        const editButton = document.getElementById('editButton');
+        const detailsModal = document.getElementById('detailsModal');
+        const closeModalButton = document.getElementById('closeModalButton');
+
+        // Add event listener to the edit button
+        editButton.addEventListener('click', function () {
+            // Show the modal
+            detailsModal.classList.remove('hidden');
+        });
+
+        // Add event listener to the close button
+        closeModalButton.addEventListener('click', function () {
+            // Hide the modal
+            detailsModal.classList.add('hidden');
+        });
+        // ---------------------------------------------------------
+        // Add event listener to the form submission
+        document.getElementById('userDetailsForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // updateUserData();
+            updateUserDetails();
+        });
+
+        // UPDATE-USER
+        // function updateUserData() {
+        //     // Get input field values
+        //     const firstName = document.getElementById('firstName').value;
+        //     const lastName = document.getElementById('lastName').value;
+        //     const emailAddress = document.getElementById('emailAddress').value;
+        //     const mobile = document.getElementById('mobile').value;
+
+        //     // Construct payload
+        //     const payload = {
+        //         firstname: firstName,
+        //         lastname: lastName,
+        //         emailaddress: emailAddress,
+        //         mobile: mobile
+        //     };
+
+        //     // Fetch method to send data to backend
+        //     fetch('http://localhost:5001/auth/updateuser/', {
+        //         method: 'PUT', // Assuming you are using PUT method for updates
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(payload)
+        //     })
+        //         .then(response => {
+        //             console.log('Response status:', response.status);
+        //             return response.json();
+        //         })
+        //         .then(data => {
+        //             console.log('Data updated successfully:', data);
+        //             // Handle success response
+        //         })
+        //         .catch(error => {
+        //             console.error('There was a problem with your fetch operation:', error);
+        //             // Handle error
+        //         });
+        // }
+        function updateUserDetails(token, payload) {
+            // Fetch user details from the server
+            fetch('http://localhost:5001/auth/getuserbyid', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch user details');
+                    }
+                    return response.json();
+                })
+                .then(userDetails => {
+                    // Extract the user ObjectId
+                    const userId = userDetails._id;
+
+                    // Construct the URL for the update request
+                    const updateUserURL = `http://localhost:5001/auth/updateuser/${userId}`;
+
+                    // Now you can perform the update request with the user's ObjectId
+                    fetch(updateUserURL, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                        .then(response => {
+                            console.log('Response status:', response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Data updated successfully:', data);
+                            // Handle success response
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with your fetch operation:', error);
+                            // Handle error
+                        });
+                })
+                .catch(error => {
+                    console.error('There was a problem fetching user details:', error);
+                    // Handle error
+                });
+        }
+
+
+        // ---------------------------------------------------------
+        // ORDER LISTING 
+        var selectedOrderid
+        var user = []
+        getOrders()
+        function getOrders() {
+            fetch('http://localhost:5001/user/user-orders', {
+                method: 'GET',
+                headers: headers,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    user = data
+                    console.log(user);
+                    showOrders()
+
+                })
+                .catch(error => {
+                    console.error("the error is:", error);
+                });
+        }
+
+        function showOrders() {
+            const tbody = document.getElementById("data-body");
+            const lottieContainer = document.getElementById("lottie-container");
+
+            if (!tbody || !lottieContainer) {
+                console.error("Element with ID 'data-body' or 'lottie-container' not found.");
+                return;
+            }
+
+            tbody.innerHTML = '';
+
+            if (user.length === 0) {
+                const animation = bodymovin.loadAnimation({
+                    container: lottieContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'https://app.lottiefiles.com/animation/3cef1a1a-f291-4d0a-9246-9359a3fa4b8f'
+                });
+                lottieContainer.style.display = 'block'; // Display the Lottie container
+                return;
+            }
+
+
+            user.forEach(item => {
+                const row = document.createElement("tr");
+                row.classList.add("bg-white", "border-b");
+
+                // Create <td> elements with specified attributes and content
+                const td1 = document.createElement("td");
+                td1.setAttribute("scope", "row");
+                td1.classList.add("px-6", "py-4", "font-medium", "text-gray-900", "whitespace-nowrap");
+                td1.textContent = item.orderId;
+
+                const td2 = document.createElement("td");
+                td2.classList.add("px-6", "py-4");
+                td2.textContent = item.orderedDate.slice(0, 10);
+
+                const td3 = document.createElement("td");
+                td3.classList.add("px-6", "py-4");
+                td3.textContent = item.deliveredDate.slice(0, 10);
+
+                const td4 = document.createElement("td");
+                td4.classList.add("whitespace-nowrap", "px-4", "py-4");
+
+                // Create <span> elements for the fourth <td>
+                // You should retrieve the appropriate delivery status here
+
+                const span1 = document.createElement("span");
+                span1.classList.add("inline-flex", "rounded-full", "bg-green-600", "px-2", "text-xs", "font-semibold", "leading-5", "text-white");
+                span1.textContent = item.deliveryStatus;
+
+                // Append appropriate spans based on delivery status
+
+                td4.appendChild(span1); // Append the span according to the delivery status
+
+                const td5 = document.createElement("td");
+                td5.classList.add("px-6", "py-4");
+
+                // Create <button> element for the fifth <td>
+                const button = document.createElement("button");
+                button.id = "cancelButton";
+                button.textContent = "Cancel";
+                button.style = item.isCancelled ? "background-color: #34D399" : "background-color: #EF4444";
+                button.classList.add("bg-red-500", "hover:bg-red-600", "text-white", "font-bold", "py-2", "px-4", "rounded", "focus:outline-none", "focus:shadow-outline");
+                button.onclick = confirmCancel;
+                selectedOrderid = item._id
+                td5.appendChild(button);
+
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+                row.appendChild(td4);
+                row.appendChild(td5);
+
+                // Append the row to the tbody
+                tbody.appendChild(row);
+            });
+        }
+
+    </script>
+</body>
+
+</html>
