@@ -1050,7 +1050,7 @@
         // GET banner dynamically
         showBanner()
         function showBanner() {
-            fetch('/banner/getAllBanners')
+            fetch('https://furnitureemporium.shop/banner/getAllBanners')
                 .then(response => response.json())
                 .then(data => {
                     const banner = data.data
