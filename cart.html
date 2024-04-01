@@ -198,7 +198,7 @@
             }
 
 
-            fetch('http://localhost:5001/cart/showcart', {
+            fetch('https://furnitureemporium.shop/cart/showcart', {
                 method: 'GET',
                 headers: headers,
             })
@@ -262,7 +262,7 @@
 
                     // Here, you can handle the selected quantity and product ID as needed
                     console.log(`Product ID: ${productId}, Selected Quantity: ${selectedQuantity}`);
-                    const addToCartResponse = await fetch("http://localhost:5001/cart/addtocart", {
+                    const addToCartResponse = await fetch("https://furnitureemporium.shop/cart/addtocart", {
 
                         method: "POST",
                         headers: headers,
@@ -283,7 +283,7 @@
                 console.log("close", closeElement)
                 closeElement.addEventListener("click", async (event) => {
 
-                    const removeProduct = await fetch("http://localhost:5001/cart/removecart", {
+                    const removeProduct = await fetch("https://furnitureemporium.shop/cart/removecart", {
                         method: "DELETE",
                         headers: headers,
                         body: JSON.stringify({
