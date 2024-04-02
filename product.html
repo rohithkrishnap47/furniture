@@ -1418,7 +1418,8 @@
                     const addedCartItem = await addToCartResponse.json();
                     const addedCartItemId = addedCartItem.id;
                     console.log("response", addedCartItem);
-                    window.location.href = `http://127.0.0.1:5508/dist/cart.html`;
+                    // window.location.href = `http://127.0.0.1:5508/dist/cart.html`;
+                    window.location.href = `/cart.html`;
                 } else {
                     console.error("Failed to add to cart:", addToCartResponse.statusText);
                 }
