@@ -829,7 +829,7 @@
         showProducts()
         let products = [];
         function showProducts() {
-            fetch('http://localhost:5001/product/productsAll')
+            fetch('https://furnitureemporium.shop/product/productsAll')
                 .then(response => response.json())
                 .then(data => {
                     const product = data.data
@@ -900,7 +900,7 @@
             const search = searchInput.value;
 
             try {
-                const response = await fetch(`http://localhost:5001/product/productsAll?name=${search}`);
+                const response = await fetch(`https://furnitureemporium.shop/product/productsAll?name=${search}`);
                 const data = await response.json();
 
                 setData(data.data)
@@ -933,7 +933,7 @@
                 console.log("sorted:", sorted, selectedValue);
 
                 try {
-                    const response = await fetch(`http://localhost:5001/product/productsAll?${sorted}`);
+                    const response = await fetch(`https://furnitureemporium.shop/product/productsAll?${sorted}`);
                     const data = await response.json();
 
                     setData(data.data)
@@ -947,7 +947,7 @@
         // Set FILTER
         showcategories()
         async function showcategories() {
-            fetch('http://localhost:5001/category/categoryAll')
+            fetch('https://furnitureemporium.shop/category/categoryAll')
                 .then(response => response.json())
                 .then(data => {
                     const categories = data.data
@@ -1012,7 +1012,7 @@
             const stringifySelected = encodeURIComponent(JSON.stringify(selectedValue))
             console.log("value", value, selectedValue)
             try {
-                const response = await fetch(`http://localhost:5001/product/productsAll?cat=${stringifySelected}`);
+                const response = await fetch(`https://furnitureemporium.shop/product/productsAll?cat=${stringifySelected}`);
                 const data = await response.json();
 
                 setData(data.data)
@@ -1055,7 +1055,7 @@
                 value = `maxvalue=${price.max}&minvalue=${minPriceValue}`
             }
             try {
-                const response = await fetch(`http://localhost:5001/product/productsAll?${value}`);
+                const response = await fetch(`https://furnitureemporium.shop/product/productsAll?${value}`);
                 const data = await response.json();
 
                 setData(data.data)
