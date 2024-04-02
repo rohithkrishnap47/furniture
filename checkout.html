@@ -436,7 +436,7 @@
         console.log("paymentMeth", paymentMeth);
         console.log("shipping data", data);
 
-        const response = await fetch("http://localhost:5001/user/place-order", {
+        const response = await fetch("https://furnitureemporium.shop/user/place-order", {
           method: "POST",
           headers: headers,
           body: JSON.stringify(data)
@@ -525,7 +525,7 @@
     // LIST-COUPON
     function getCoupon() {
 
-      fetch('http://localhost:5001/admin/getALLcoupon')
+      fetch('https://furnitureemporium.shop/admin/getALLcoupon')
         .then(response => response.json())
         .then(data => {
           coupon_list = data.coupons
@@ -576,7 +576,7 @@
           pincode: pincode,
         }
         console.log("shipping data", data);
-        const response = await fetch("http://localhost:5001/user/add-address", {
+        const response = await fetch("https://furnitureemporium.shop/user/add-address", {
           method: "POST",
           headers: headers,
           body: JSON.stringify(data)
@@ -605,7 +605,7 @@
       }
 
 
-      fetch('http://localhost:5001/cart/showcart', {
+      fetch('https://furnitureemporium.shop/cart/showcart', {
         method: 'GET',
         headers: headers,
       })
@@ -669,7 +669,7 @@
         return;
       }
       console.log("token:", token, headers);
-      fetch('http://localhost:5001/auth/getuserbyid', {
+      fetch('https://furnitureemporium.shop/auth/getuserbyid', {
         method: 'GET',
         headers: headers,
       })
@@ -687,7 +687,7 @@
     function getAddress(ids) {
       addressList = []
       ids?.forEach(i => {
-        fetch('http://localhost:5001/user/get-address?addressId=' + i, {
+        fetch('https://furnitureemporium.shop/user/get-address?addressId=' + i, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
