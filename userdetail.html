@@ -584,7 +584,7 @@
 
         // ORDER-CANCEL-API
         function orderCancel(selectedOrderid) {
-            fetch('http://localhost:5001/user/delete-order', {
+            fetch('https://furnitureemporium.shop/user/delete-order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -647,7 +647,7 @@
         //     };
 
         //     // Fetch method to send data to backend
-        //     fetch('http://localhost:5001/auth/updateuser/', {
+        //     fetch('https://furnitureemporium.shop/auth/updateuser/', {
         //         method: 'PUT', // Assuming you are using PUT method for updates
         //         headers: {
         //             'Content-Type': 'application/json'
@@ -669,7 +669,7 @@
         // }
         function updateUserDetails(token, payload) {
             // Fetch user details from the server
-            fetch('http://localhost:5001/auth/getuserbyid', {
+            fetch('https://furnitureemporium.shop/auth/getuserbyid', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -687,7 +687,7 @@
                     const userId = userDetails._id;
 
                     // Construct the URL for the update request
-                    const updateUserURL = `http://localhost:5001/auth/updateuser/${userId}`;
+                    const updateUserURL = `https://furnitureemporium.shop/auth/updateuser/${userId}`;
 
                     // Now you can perform the update request with the user's ObjectId
                     fetch(updateUserURL, {
@@ -724,7 +724,7 @@
         var user = []
         getOrders()
         function getOrders() {
-            fetch('http://localhost:5001/user/user-orders', {
+            fetch('https://furnitureemporium.shop/user/user-orders', {
                 method: 'GET',
                 headers: headers,
             })
