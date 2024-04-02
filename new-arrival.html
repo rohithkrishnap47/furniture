@@ -850,7 +850,7 @@
         showProducts()
         let products = [];
         function showProducts() {
-            fetch('http://localhost:5001/product/productsAll')
+            fetch('https://furnitureemporium.shop/product/productsAll')
                 .then(response => response.json())
                 .then(data => {
                     const product = data.data
