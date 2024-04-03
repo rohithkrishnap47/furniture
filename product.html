@@ -547,8 +547,8 @@
                     <div id="productimage" class="row g-3" data-aos="fade-right">
                         <div class="col-12">
                             <picture>
-                                <img class="img-fluid" data-zoomable src="./assets/images/products/product-page-1.jpeg"
-                                    alt="HTML Bootstrap Template by Pixel Rocket">
+                                <img class="loading" data-zoomable src=""
+                                    alt="F-empo">
                             </picture>
                         </div>
                         <!-- <div class="col-12">
@@ -673,8 +673,11 @@
                                     </picture>
                                 </div>
                             </div> -->
-                            <button onclick="addToCart()" id="buynow"
-                                class="btn btn-dark w-100 mt-4 mb-0 hover-lift-sm hover-boxshadow">Buy Now</button>
+                            <!-- OLD BUTTON -->
+                            <!-- <button onclick="addToCart()" id="buynow"
+                                class="btn btn-dark w-100 mt-4 mb-0 hover-lift-sm hover-boxshadow">Buy Now</button> -->
+                            <button id="buynow" class="btn btn-dark w-100 mt-4 mb-0 hover-lift-sm hover-boxshadow">Buy
+                                Now</button>
 
                             <!-- Product Highlights-->
                             <div class="my-5">
@@ -1364,6 +1367,10 @@
                 });
 
         }
+
+        // ==========================
+
+        // ==========================
         function setData(products) {
             const productnContainer = document.getElementById("productimage");
             const productDetail = document.getElementById("productDetail");
@@ -1383,6 +1390,9 @@
 
         }
 
+        // Get the button element
+        const buyNowButton = document.getElementById('buynow');
+        buyNowButton.addEventListener('click', addToCart);
         async function addToCart() {
             try {
                 if (isProductFoundinCart) {
@@ -1431,6 +1441,8 @@
             } catch (error) {
                 console.error("Error:", error.message);
             }
+            console.log('Item added to cart!');
+
         }
 
         // ---------------------------------------------------------------------------------------------
