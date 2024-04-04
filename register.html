@@ -94,7 +94,7 @@
     function checkUserExists() {
       const token = localStorage.getItem('token');
       if (token) {
-        window.location.href = '/dist/index.html';
+        window.location.href = '/index.html';
       }
     }
 
@@ -130,7 +130,7 @@
         const datas = await resp.json();
 
         if (datas.statusCode === 201) {
-          window.location.href = "/dist/login.html";
+          window.location.href = "/login.html";
         }
       } catch (error) {
         console.log(error);

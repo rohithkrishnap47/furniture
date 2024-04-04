@@ -222,7 +222,7 @@
         const datas = await response.json()
         if (datas.statusCode === 200) {
           const email = datas.email;
-          window.location.href = `http://127.0.0.1:5508/dist/reset_password.html?email=${email}`;
+          window.location.href = `/reset_password.html?email=${email}`;
         } else {
           console.error('Unexpected status code:', datas.statusCode);
           errorMess()

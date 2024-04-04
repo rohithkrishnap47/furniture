@@ -774,7 +774,7 @@
                 <div class="col-12 col-md-6 position-relative z-index-20 pe-0" id="second_banner">
 
                     <picture class="w-50 d-block position-relative z-index-30 border border-white border-4 shadow-lg">
-                        <a href="/dist/product.html">
+                        <a href="/product.html">
                             <img class="img-fluid" src="./assets/images/banners/fempo01.jpeg" alt="Furniture-Emporium">
                         </a>
                     </picture>
@@ -1092,7 +1092,7 @@
         `;
                 console.log("element.relatedItemId", element.relatedItemId, element.clickType);
                 bannerSlide.addEventListener("onclick", () => {
-                    window.location.href("/dist/product.html?id=" + element.relatedItemId)
+                    window.location.href("/product.html?id=" + element.relatedItemId)
                 })
 
                 // Append the banner slide to the banner container
@@ -1140,7 +1140,7 @@
         async function searchProducts() {
             event.preventDefault();
             const productSearch = document.getElementById("productSearch").value
-            window.location.href = `http://127.0.0.1:5508/dist/all_products.html?search=${productSearch}`
+            window.location.href = `/all_products.html?search=${productSearch}`
 
             try {
                 // const response = await fetch(`https://furnitureemporium.shop/product/productsAll?name=${search}`);
