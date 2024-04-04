@@ -53,6 +53,10 @@
       .simplebar-content-wrapper {
         overflow: auto;
       }
+
+      .radio-with-border {
+        border: 1px solid #000;
+      }
     </style>
   </noscript>
 
@@ -452,7 +456,7 @@
             initRazorpay(responseData)
           }
           else {
-            window.location.href = "http://127.0.0.1:5508/dist/order_placed_COD.html?id=" + responseData._id;
+            window.location.href = "/order_placed_COD.html?id=" + responseData._id;
           }
 
         } else {
@@ -479,7 +483,7 @@
         "handler": function (response) {
           console.log(response);
           alert("This step of Payment Succeeded");
-          window.location.href = "http://127.0.0.1:5508/dist/order_success.html";
+          window.location.href = "/order_success.html";
         },
         "prefill": {
           // Here we are prefilling random contact
