@@ -125,7 +125,7 @@
                                         class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                         id="message" placeholder="Leave us a message" cols="3"></textarea>
                                 </div>
-                                <button id="submitresponse" type="button"
+                                <button onclick="contactFormSubmit()" id="submitresponse" type="button"
                                     class="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
                                     Send Message
                                 </button>
@@ -248,71 +248,68 @@
         </section>
     </div>
 
+
     <!-- //CONTACT US -->
 
+
+
+
+
     <script>
-        const editButton = document.getElementById('editButton');
-        const detailsModal = document.getElementById('detailsModal');
-        const closeModalButton = document.getElementById('closeModalButton');
+        // const editButton = document.getElementById('editButton');
+        // const detailsModal = document.getElementById('detailsModal');
+        // const closeModalButton = document.getElementById('closeModalButton');
 
-        editButton.addEventListener('click', function () {
-            detailsModal.classList.remove('hidden');
-        });
+        // editButton.addEventListener('click', function () {
+        //     detailsModal.classList.remove('hidden');
+        // });
 
-        closeModalButton.addEventListener('click', function () {
-            detailsModal.classList.add('hidden');
-        });
+        // closeModalButton.addEventListener('click', function () {
+        //     detailsModal.classList.add('hidden');
+        // });
 
+        function contactFormSubmit() {
+            // Get form values
+            const firstName = document.getElementById('first_name').value;
+            const lastName = document.getElementById('last_name').value;
+            const email = document.getElementById('email').value;
+            const phoneNumber = document.getElementById('phone_number').value;
+            const message = document.getElementById('message').value;
 
+            // Construct data object
+            const formData = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phoneNumber: phoneNumber,
+                message: message
+            };
 
-        // fetching  form data
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector('form');
-
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent the form from submitting normally
-
-                // Get form values
-                const firstName = document.getElementById('first_name').value;
-                const lastName = document.getElementById('last_name').value;
-                const email = document.getElementById('email').value;
-                const phoneNumber = document.getElementById('phone_number').value;
-                const message = document.getElementById('message').value;
-
-                // Construct data object
-                const formData = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    phoneNumber: phoneNumber,
-                    message: message
-                };
-
-                // You can now send this formData to your backend for processing
-                // Example: Send data using fetch API
-                fetch('/submit-contact-form', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
+            // You can now send this formData to your backend for processing
+            // Example: Send data using fetch API
+            fetch('https://furnitureemporium.shop/user/submit-contact-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Handle success
+                        console.log('Form submitted successfully');
+                        // Optionally, clear the form inputs
+                        form.reset();
+                    } else {
+                        // Handle error
+                        console.error('Form submission failed');
+                    }
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            // Handle success
-                            console.log('Form submitted successfully');
-                            // Optionally, clear the form inputs
-                            form.reset();
-                        } else {
-                            // Handle error
-                            console.error('Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            });
-        });
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        }
 
 
 
