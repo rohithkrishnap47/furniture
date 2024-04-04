@@ -13,6 +13,13 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <title>Furnitue Emporium</title>
+    <style>
+        input[type="text"],
+        input[type="tel"],
+        textarea {
+            color: black;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,55 +81,55 @@
                             </div>
                             <form action="" class="mt-8 space-y-4">
                                 <div class="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
-                                    <div class="grid w-full  items-center gap-1.5">
+                                    <div class="grid w-full items-center gap-1.5">
                                         <label
                                             class="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                             for="first_name">
                                             First Name
                                         </label>
                                         <input
-                                            class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                            class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                             type="text" id="first_name" placeholder="First Name" />
                                     </div>
-                                    <div class="grid w-full  items-center gap-1.5">
+                                    <div class="grid w-full items-center gap-1.5">
                                         <label
                                             class="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                             for="last_name">
                                             Last Name
                                         </label>
                                         <input
-                                            class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                            class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                             type="text" id="last_name" placeholder="Last Name" />
                                     </div>
                                 </div>
-                                <div class="grid w-full  items-center gap-1.5">
+                                <div class="grid w-full items-center gap-1.5">
                                     <label
                                         class="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                         for="email">
                                         Email
                                     </label>
                                     <input
-                                        class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                        class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                         type="text" id="email" placeholder="Email" />
                                 </div>
-                                <div class="grid w-full  items-center gap-1.5">
+                                <div class="grid w-full items-center gap-1.5">
                                     <label
                                         class="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                         for="phone_number">
                                         Phone number
                                     </label>
                                     <input
-                                        class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                        class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                         type="tel" id="phone_number" placeholder="Phone number" />
                                 </div>
-                                <div class="grid w-full  items-center gap-1.5">
+                                <div class="grid w-full items-center gap-1.5">
                                     <label
                                         class="text-sm font-medium leading-none text-gray-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                         for="message">
                                         Message
                                     </label>
                                     <textarea
-                                        class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                        class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-black text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                         id="message" placeholder="Leave us a message" cols="3"></textarea>
                                 </div>
                                 <button onclick="contactFormSubmit()" id="submitresponse" type="button"
@@ -130,6 +137,7 @@
                                     Send Message
                                 </button>
                             </form>
+
                         </div>
                     </div>
                     <img alt="Contact us" class="hidden max-h-full w-full rounded-lg object-cover lg:block"
