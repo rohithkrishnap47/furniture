@@ -547,8 +547,7 @@
                     <div id="productimage" class="row g-3" data-aos="fade-right">
                         <div class="col-12">
                             <picture>
-                                <img class="loading" data-zoomable src=""
-                                    alt="F-empo">
+                                <img class="loading" data-zoomable src="" alt="F-empo">
                             </picture>
                         </div>
                         <!-- <div class="col-12">
@@ -1311,7 +1310,7 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-end flex-column flex-lg-row">
                     <p class="small m-0 text-center text-lg-start">&copy; 2024 F-Empo All Rights Reserved. Template by
-                        <a href="https://www.pixelrocket.store">F-Empo</a>
+                        <a href="https://www.threads.net/@rohithkrishna.p">F-Empo</a>
                     </p>
                     <ul class="list-unstyled mb-0 ms-lg-4 mt-3 mt-lg-0 d-flex justify-content-end align-items-center">
                         <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
@@ -1369,7 +1368,34 @@
         }
 
         // ==========================
+        // authentication code
+        const userspan = document.getElementById("username");
+        const logoutlist = document.getElementById("logout");
+        const loginList = document.getElementById("login");
 
+        checkAuthenticated()
+        function checkAuthenticated() {
+            // Check if token exists in localStorage
+            const token = localStorage.getItem('token');
+            if (token) {
+                // json stingify to parse
+                const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+                userspan.textContent = `Hello, ${userInfo?.firstname ? userInfo.firstname.toUpperCase() : ''} 👋`;
+                logoutlist.style.display = "block"
+                loginList.style.display = "none"
+                console.log("userinfo=>", userInfo);
+            }
+            else {
+                logoutlist.style.display = "none"
+                loginList.style.display = "block"
+            }
+
+
+        }
+        function logout() {
+            localStorage.clear();
+            window.location.reload()
+        }
         // ==========================
         function setData(products) {
             const productnContainer = document.getElementById("productimage");
