@@ -602,7 +602,8 @@
 
                             <h1 id="productDetail" class="mb-1 fs-2 fw-bold"></h1>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p id="productPrice" class="fs-4 m-0">$34.99</p>
+                                <p id="productPrice" class="fs-4 m-0">loading...</p>
+                                <p id="discountedPrice" class="text-danger">loading...</p>
                             </div>
                             <!-- <div class="border-top mt-4 mb-3 product-option">
                                 <small class="text-uppercase pt-4 d-block fw-bolder">
@@ -1401,8 +1402,10 @@
             const productnContainer = document.getElementById("productimage");
             const productDetail = document.getElementById("productDetail");
             const productPrice = document.getElementById("productPrice");
+            const discountedPrice = document.getElementById("discountedPrice");
             productDetail.innerHTML = products.name;
             productPrice.innerHTML = "₹" + products.price;
+            discountedPrice.innerHTML = "₹" + products.price-products.discount;
             // Clear existing content in the banner container
             productnContainer.innerHTML = "";
             console.log("$$$$", products);
