@@ -604,6 +604,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <p id="productPrice" class="fs-4 m-0">loading...</p>
                                 <p id="discountedPrice" class="text-danger">loading...</p>
+                                <p id="results" class="fs-4">Total </p>
                             </div>
                             <!-- <div class="border-top mt-4 mb-3 product-option">
                                 <small class="text-uppercase pt-4 d-block fw-bolder">
@@ -1403,9 +1404,17 @@
             const productDetail = document.getElementById("productDetail");
             const productPrice = document.getElementById("productPrice");
             const discountedPrice = document.getElementById("discountedPrice");
+            const results = document.getElementById("results");
             productDetail.innerHTML = products.name;
             productPrice.innerHTML = "₹" + products.price;
             discountedPrice.innerHTML = "₹" + products.discount;
+
+            const productPriceValue = parseFloat(productPriceElement.textContent.replace(/[^\d.]/g, ''));
+            const discountedPriceValue = parseFloat(discountedPriceElement.textContent.replace(/[^\d.]/g, ''));
+            discountedPrice.innerHTML = "₹" + products.discount;
+            results.innerHTML = productPriceValue - discountedPriceValue;
+            // const results = productPriceValue - discountedPriceValue;
+
             // Clear existing content in the banner container
             productnContainer.innerHTML = "";
             console.log("$$$$", products);
