@@ -1403,9 +1403,10 @@
             const productDetail = document.getElementById("productDetail");
             const productPrice = document.getElementById("productPrice");
             const discounted = document.getElementById("discounted");
+            const discountedPrice = products.price - products.discount
             productDetail.innerHTML = products.name;
             productPrice.innerHTML = "₹" + products.price;
-            discounted.innerHTML = "₹" + products.price - products.discount;
+            discounted.innerHTML = "₹" + discountedPrice;
             // Clear existing content in the banner container
             productnContainer.innerHTML = "";
             console.log("$$$$", products);
