@@ -1071,25 +1071,24 @@
             banners.forEach(element => {
                 const bannerSlide = document.createElement("div");
                 bannerSlide.className = "swiper-slide position-relative h-100 w-100";
-                bannerSlide.innerHTML = `<a href="${element.clickType === 'product' ? '/product.html?id=' + element.relatedItemId : '/all_categories.html?id=' + element.relatedItemId}">
-                    <div style="pointer-events: auto !important;" class="w-100 h-100 overflow-hidden position-absolute z-index-1 top-0 start-0 end-0 bottom-0">
-                        <div class="w-100 h-100 bg-img-cover bg-pos-center-center overflow-hidden"
-                            data-swiper-parallax="-100"
-                            style="will-change: transform; background-image: url(${element.bannerImage}); background-repeat: repeat;">
-                        </div>
-                    </div>
-                    <div style="text-decoration: none;" class="container position-relative z-index-10 d-flex h-100 align-items-start flex-column justify-content-center">
-                        <p class="title-small text-black opacity-75 mb-0" data-swiper-parallax="-100">${element.bannerTitle}</p>
-                        <h2 class="display-3 tracking-wide fw-bold text-uppercase tracking-wide text-white"
-                            data-swiper-parallax="100">
-                            <span class="text-outline-light">${element.bannerTitle}</span>
-                        </h2>
-                        <div data-swiper-parallax-y="-25">
-                            <div class="btn btn-psuedo text-black" role="button">${element.description}</div>
-                        </div>
-                    </div>
-                </a>
-
+                bannerSlide.innerHTML = `<a href="${element.clickType === 'product' ? '/product.html?id=' + element.relatedItemId : '/all_categories.html?id=' + element.relatedItemId}"
+            <div style="pointer-events: auto !important;" class=" w-100 h-100 overflow-hidden position-absolute z-index-1 top-0 start-0 end-0 bottom-0">
+                
+                <div class="w-100 h-100 bg-img-cover bg-pos-center-center overflow-hidden"
+                    data-swiper-parallax="-100"
+                    style=" will-change: transform; background-image: url(${element.bannerImage}); background-repeat: repeat;">
+                </div>
+                
+            </div>
+            <a href="${element.clickType === 'product' ? '/product.html?id=' + element.relatedItemId : '/all_categories.html?id=' + element.relatedItemId}" style="text-decoration: none;" class=" container position-relative z-index-10 d-flex h-100 align-items-start flex-column justify-content-center">
+                <p class="title-small text-black opacity-75 mb-0" data-swiper-parallax="-100">${element.bannerTitle}</p>
+                <h2 class="display-3 tracking-wide fw-bold text-uppercase tracking-wide text-white"
+                    data-swiper-parallax="100">
+                    <span class="text-outline-light ">${element.bannerTitle}</span></h2>
+                <div data-swiper-parallax-y="-25">
+                    <div class="btn btn-psuedo text-black" role="button">${element.description}</div>
+                </div>
+            </a></a>
         `;
                 console.log("element.relatedItemId", element.relatedItemId, element.clickType);
                 bannerSlide.addEventListener("onclick", () => {
