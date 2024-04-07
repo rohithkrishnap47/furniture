@@ -57,6 +57,23 @@
       .radio-with-border {
         border: 1px solid #000;
       }
+
+      .form-check-input {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+
+      .form-check-input[type="radio"] {
+        display: none;
+      }
+
+      .form-check-input[type="radio"]:checked {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
     </style>
   </noscript>
 
@@ -744,9 +761,9 @@
         <div class="card-body d-flex justify-content-between">
             <div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="addressSelection" id="address${element.id}" >
+                    <input type="radio" style="" class="form-check-input" name="addressSelection" id="address${element.id}" >
                     <label class="form-check-label" for="address${element.id}">
-                        ${element.firstname.toUpperCase() + " " + element.lastname.toUpperCase() + ","}
+                        ${element.firstname.toUpperCase() + " " + element.lastname.toUpperCase()}
                         
                     </label>
                 </div>
