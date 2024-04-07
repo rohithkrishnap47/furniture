@@ -40,6 +40,12 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
 
+    <!-- Include Toastify CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+
+    <!-- Include Toastify JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <!-- Fix for custom scrollbar if JS is disabled-->
     <noscript>
         <style>
@@ -1362,6 +1368,21 @@
         buyNowButton.addEventListener('click', addToCart);
         async function addToCart() {
             try {
+                if (!token) {
+                    Toastify({
+                        text: "You are not logged in.",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: 'center',
+                        backgroundColor: "linear-gradient(to right, #FF416C, #FF4B2B)",
+                        stopOnFocus: true,
+                    }).showToast();
+                    setTimeout(function () {
+                        window.location.href = "/login.html";
+                    }, 3000); 
+
+                }
                 if (isProductFoundinCart) {
                     // window.location.href = `http://127.0.0.1:5508/dist/cart.html`
                     window.location.href = `/cart.html`
