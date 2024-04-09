@@ -598,12 +598,12 @@
 
         // Basic validation
         if (firstName === '') {
-          showToast("Please enter first name.");
+          NameToast("Please enter first name.");
           return;
         }
 
         if (lastName === '') {
-          showToast("Please enter last name.");
+          NameToast("Please enter last name.");
           return;
         }
 
@@ -653,25 +653,37 @@
         showToast("An error occurred. Please try again later.");
       }
     }
-
+    // NORMAL-TOAST
     function showToast(message) {
       Toastify({
         text: message,
         duration: 3000,
         close: true,
         gravity: "top", // `top` or `bottom`
-        position: 'right', // `left`, `center` or `right`
+        position: 'center', // `left`, `center` or `right`
         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
       }).showToast();
     }
+    // PINCODE-TOAST
     function showT(message) {
       Toastify({
         text: message,
         duration: 3000,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: 'right', // `left`, `center` or `right`
+        gravity: "top", 
+        position: 'center', 
         backgroundColor: "linear-gradient(to right, #f12711, #f5af19)",
+      }).showToast();
+    }
+    // NAME-TOAST
+    function NameToast(message) {
+      Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top", 
+        position: 'center', 
+        backgroundColor: "linear-gradient(to right, #ff416c, #6666ff)",
       }).showToast();
     }
 
