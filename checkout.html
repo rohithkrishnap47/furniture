@@ -622,9 +622,8 @@
           return;
         }
 
-        // Pincode validation
         if (!/^\d{6}$/.test(pincode)) {
-          showToast("Please enter a valid 6-digit pincode.");
+          showToast("Please enter 6-digit pincode.","linear-gradient(to right, #f12711, #f5af19)");
           return;
         }
 
