@@ -492,63 +492,6 @@
       }
     }
     // ----------------------------------------------------------------------------------------
-    function addshippingdata() {
-      // Fetching input values
-      var firstName = document.getElementById('firstName').value;
-      var lastName = document.getElementById('lastName').value;
-      var address = document.getElementById('address').value;
-      var country = document.getElementById('country').value;
-      var state = document.getElementById('state').value;
-      var pincode = document.getElementById('pincode').value;
-
-      // Basic validation
-      if (firstName.trim() === '') {
-        showToast("Please enter first name.");
-        return false;
-      }
-
-      if (lastName.trim() === '') {
-        showToast("Please enter last name.");
-        return false;
-      }
-
-      if (address.trim() === '') {
-        showToast("Please enter address.");
-        return false;
-      }
-
-      if (country === 'Please Select...') {
-        showToast("Please select country.");
-        return false;
-      }
-
-      if (state === 'Please Select...') {
-        showToast("Please select state.");
-        return false;
-      }
-
-      // Pincode validation
-      var pincodeRegex = /^[0-9]{6}$/; // Regular expression to match exactly 6 digits
-      if (!pincodeRegex.test(pincode)) {
-        showToast("Please enter a VALID 6-digit pincode.");
-        return false;
-      }
-
-      // If all validations pass, you can proceed with your logic
-      // For example, you can submit the form data to the server
-      // or perform any other action
-    }
-
-    function showToast(message) {
-      Toastify({
-        text: message,
-        duration: 3000,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: 'right', // `left`, `center` or `right`
-        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-      }).showToast();
-    }
 
 
     // ----------------------------------------------------------------------------------------
@@ -646,13 +589,44 @@
     // Get-Data-From-user
     async function addshippingdata() {
       try {
-        // event.preventDefault()
-        const firstName = document.getElementById("firstName").value
-        const lastName = document.getElementById("lastName").value
-        const address = document.getElementById("address").value
-        const country = document.getElementById("country").value
-        const state = document.getElementById("state").value
-        const pincode = document.getElementById("pincode").value
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const country = document.getElementById("country").value;
+        const state = document.getElementById("state").value;
+        const pincode = document.getElementById("pincode").value.trim();
+
+        // Basic validation
+        if (firstName === '') {
+          showToast("Please enter first name.");
+          return;
+        }
+
+        if (lastName === '') {
+          showToast("Please enter last name.");
+          return;
+        }
+
+        if (address === '') {
+          showToast("Please enter address.");
+          return;
+        }
+
+        if (country === 'Please Select...') {
+          showToast("Please select country.");
+          return;
+        }
+
+        if (state === 'Please Select...') {
+          showToast("Please select state.");
+          return;
+        }
+
+        // Pincode validation
+        if (!/^\d{6}$/.test(pincode)) {
+          showToast("Please enter a valid 6-digit pincode.");
+          return;
+        }
 
         const data = {
           firstname: firstName,
@@ -661,24 +635,36 @@
           country: country,
           state: state,
           pincode: pincode,
-        }
-        console.log("shipping data", data);
+        };
+
         const response = await fetch("https://furnitureemporium.shop/user/add-address", {
           method: "POST",
           headers: headers,
-          body: JSON.stringify(data)
-        })
-        const datas = await response.json()
-        console.log("hey", datas);
+          body: JSON.stringify(data),
+        });
+
         if (response.ok) {
-          location.reload()
+          location.reload();
+        } else {
+          showToast("Failed to add address. Please try again later.");
         }
 
       } catch (error) {
         console.error(error);
+        showToast("An error occurred. Please try again later.");
       }
     }
 
+    function showToast(message) {
+      Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: 'right', // `left`, `center` or `right`
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+      }).showToast();
+    }
 
     // ----------------------------------------------------------------------------------------
     //  show-cart
