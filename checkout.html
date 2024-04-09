@@ -38,6 +38,12 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <!-- bootstrap -->
   <!--  -->
+  <!-- Include Toastify CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+
+  <!-- Include Toastify JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -485,6 +491,66 @@
         // Handle errors here
       }
     }
+    // ----------------------------------------------------------------------------------------
+    function addshippingdata() {
+      // Fetching input values
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var address = document.getElementById('address').value;
+      var country = document.getElementById('country').value;
+      var state = document.getElementById('state').value;
+      var pincode = document.getElementById('pincode').value;
+
+      // Basic validation
+      if (firstName.trim() === '') {
+        showToast("Please enter first name.");
+        return false;
+      }
+
+      if (lastName.trim() === '') {
+        showToast("Please enter last name.");
+        return false;
+      }
+
+      if (address.trim() === '') {
+        showToast("Please enter address.");
+        return false;
+      }
+
+      if (country === 'Please Select...') {
+        showToast("Please select country.");
+        return false;
+      }
+
+      if (state === 'Please Select...') {
+        showToast("Please select state.");
+        return false;
+      }
+
+      // Pincode validation
+      var pincodeRegex = /^[0-9]{6}$/; // Regular expression to match exactly 6 digits
+      if (!pincodeRegex.test(pincode)) {
+        showToast("Please enter a VALID 6-digit pincode.");
+        return false;
+      }
+
+      // If all validations pass, you can proceed with your logic
+      // For example, you can submit the form data to the server
+      // or perform any other action
+    }
+
+    function showToast(message) {
+      Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: 'right', // `left`, `center` or `right`
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
+      }).showToast();
+    }
+
+
     // ----------------------------------------------------------------------------------------
     // RAZORPAY INTEGRATION
     function initRazorpay(order) {
