@@ -623,7 +623,7 @@
         }
 
         if (!/^\d{6}$/.test(pincode)) {
-          showToast("Please enter 6-digit pincode.","linear-gradient(to right, #f12711, #f5af19)");
+          showT("Please enter 6-digit pincode.");
           return;
         }
 
@@ -662,6 +662,16 @@
         gravity: "top", // `top` or `bottom`
         position: 'right', // `left`, `center` or `right`
         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+      }).showToast();
+    }
+    function showT(message) {
+      Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: 'right', // `left`, `center` or `right`
+        backgroundColor: "linear-gradient(to right, #f12711, #f5af19)",
       }).showToast();
     }
 
