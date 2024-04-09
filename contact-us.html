@@ -276,48 +276,41 @@
         //     detailsModal.classList.add('hidden');
         // });
 
-        function contactFormSubmit() {
-            // Get form values
-            const firstName = document.getElementById('first_name').value;
-            const lastName = document.getElementById('last_name').value;
-            const email = document.getElementById('email').value;
-            const phoneNumber = document.getElementById('phone_number').value;
-            const message = document.getElementById('message').value;
+        async function contactFormSubmit() {
+            try {
+                const firstName = document.getElementById('first_name').value;
+                const lastName = document.getElementById('last_name').value;
+                const email = document.getElementById('email').value;
+                const phoneNumber = document.getElementById('phone_number').value;
+                const message = document.getElementById('message').value;
 
-            // Construct data object
-            const formData = {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                phoneNumber: phoneNumber,
-                message: message
-            };
+                const formData = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phoneNumber: phoneNumber,
+                    message: message
+                };
 
-            // You can now send this formData to your backend for processing
-            // Example: Send data using fetch API
-            fetch('https://furnitureemporium.shop/user/submit-contact-form', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        // Handle success
-                        console.log('Form submitted successfully');
-                        // Optionally, clear the form inputs
-                        form.reset();
-                    } else {
-                        // Handle error
-                        console.error('Form submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+                const response = await fetch('https://furnitureemporium.shop/user/submit-contact-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
                 });
 
+                if (response.ok) {
+                    console.log('Form submitted successfully');
+                    form.reset();
+                } else {
+                    console.error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
+
 
 
 
