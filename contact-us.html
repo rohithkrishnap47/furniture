@@ -305,8 +305,8 @@
                     },
                     body: JSON.stringify(formData),
                 });
-
-                if (response.ok) {
+                const resp=response.json()
+                if (successfully) {
                     console.log('Form submitted successfully');
                     form.reset();
                     // Display Toastify alert
