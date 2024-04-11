@@ -13,6 +13,12 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <title>Furnitue Emporium</title>
+
+    <!-- Include Toastify CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+
+    <!-- Include Toastify JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <style>
         input[type="text"],
         input[type="tel"],
@@ -303,6 +309,15 @@
                 if (response.ok) {
                     console.log('Form submitted successfully');
                     form.reset();
+                    // Display Toastify alert
+                    Toastify({
+                        text: 'Mail has been sent successfully',
+                        duration: 3000, // Duration in milliseconds
+                        gravity: 'bottom', // Display position
+                        position: 'right', // Display position
+                        backgroundColor: 'green', // Background color
+                        stopOnFocus: true, // Close the toast when the user focuses on it
+                    }).showToast();
                 } else {
                     console.error('Form submission failed');
                 }
