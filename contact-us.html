@@ -306,9 +306,9 @@
                     body: JSON.stringify(formData),
                 });
                 const resp=response.json()
-                if (successfully) {
+                if (resp.data.message==="successfully") {
                     console.log('Form submitted successfully');
-                    // form.reset();
+                    form.reset();
                     // Display Toastify alert
                     Toastify({
                         text: 'Mail has been sent successfully',
