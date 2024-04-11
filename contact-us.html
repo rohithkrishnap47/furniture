@@ -283,48 +283,48 @@
         // });
 
         async function contactFormSubmit() {
-    try {
-        const firstName = document.getElementById('first_name').value;
-        const lastName = document.getElementById('last_name').value;
-        const email = document.getElementById('email').value;
-        const phoneNumber = document.getElementById('phone_number').value;
-        const message = document.getElementById('message').value;
+            try {
+                const firstName = document.getElementById('first_name').value;
+                const lastName = document.getElementById('last_name').value;
+                const email = document.getElementById('email').value;
+                const phoneNumber = document.getElementById('phone_number').value;
+                const message = document.getElementById('message').value;
 
-        const formData = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            phoneNumber: phoneNumber,
-            message: message
-        };
+                const formData = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phoneNumber: phoneNumber,
+                    message: message
+                };
 
-        const response = await fetch('https://furnitureemporium.shop/user/submit-contact-form', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+                const response = await fetch('https://furnitureemporium.shop/user/submit-contact-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
 
-        if (response.ok) {
-            console.log('Form submitted successfully',response);
-            form.reset();
-            // Display Toastify alert
-            Toastify({
-                text: 'Mail has been sent successfully',
-                duration: 3000, // Duration in milliseconds
-                gravity: 'bottom', // Display position
-                position: 'right', // Display position
-                backgroundColor: 'green', // Background color
-                stopOnFocus: true, // Close the toast when the user focuses on it
-            }).showToast();
-        } else {
-            console.error('Form submission failed');
+                if (response.ok) {
+                    console.log('Form submitted successfully', response);
+                    // form.reset();
+                    // Display Toastify alert
+                    Toastify({
+                        text: 'Mail has been sent successfully',
+                        duration: 3000, // Duration in milliseconds
+                        gravity: 'bottom', // Display position
+                        position: 'right', // Display position
+                        backgroundColor: 'green', // Background color
+                        stopOnFocus: true, // Close the toast when the user focuses on it
+                    }).showToast();
+                } else {
+                    console.error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
 
 
