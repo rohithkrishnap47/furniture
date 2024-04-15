@@ -1,165 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Demo</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    <!-- Custom Google Fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Roboto:wght@300;400;700&display=auto"
-        rel="stylesheet">
+    .invoice-container {
+      background-color: #fff;
+      max-width: 800px;
+      padding: 40px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+    }
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-    <link rel="mask-icon" href="./assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    h2 {
+      text-align: center;
+      color: #333;
+    }
 
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="./assets/css/libs.bundle.css" />
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
+    th, td {
+      border: 1px solid #ddd;
+      padding: 20px;
+      text-align: left;
+    }
 
-    <!-- Your custom styles -->
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
+    th {
+      background-color: #f2f2f2;
+    }
 
-        .wishlist-container {
-            display: grid;
-            gap: 20px;
-        }
+    .total {
+      margin-top: 20px;
+      text-align: right;
+      font-weight: bold;
+    }
 
-        .wishlist-item {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            position: relative;
-        }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .invoice-container {
+        padding: 20px;
+        font-size: 14px;
+      }
 
-        .wishlist-item h3 {
-            margin-bottom: 10px;
-            color: #333;
-        }
+      th, td {
+        padding: 10px;
+      }
+    }
 
-        .wishlist-item p {
-            color: #666;
-            margin-bottom: 20px;
-        }
+    @media (max-width: 480px) {
+      .invoice-container {
+        padding: 10px;
+      }
 
-        .wishlist-item button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            padding: 8px 16px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+      h2 {
+        font-size: 20px;
+      }
 
-        .wishlist-item button:hover {
-            background-color: #218838;
-        }
-
-        .cart-container {
-            margin-top: 20px;
-        }
-
-        .cart-item {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-item button {
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .cart-item button:hover {
-            background-color: #c82333;
-        }
-    </style>
-    <title>Furniture Emporium</title>
+      table {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
-
-<body class="bg-light">
-
-    <section class="mt-0 overflow-hidden vh-100 d-flex justify-content-center align-items-center p-4">
-        <div class="col col-md-8 col-lg-6 col-xxl-5">
-            <div class="shadow-xl p-4 p-lg-5 bg-white">
-                <h1 class="text-center mb-5 fs-2 fw-bold">Wishlist</h1>
-
-                <!-- Wishlist Items Container -->
-                <div class="wishlist-container">
-                    <!-- Sample wishlist items -->
-                    <div class="wishlist-item">
-                        <h3>Item 1</h3>
-                        <p>Description of item 1.</p>
-                        <button onclick="addToCart(this)" class="btn btn-success">Add to Cart</button>
-                    </div>
-                    <div class="wishlist-item">
-                        <h3>Item 2</h3>
-                        <p>Description of item 2.</p>
-                        <button onclick="addToCart(this)" class="btn btn-success">Add to Cart</button>
-                    </div>
-                    <!-- Add more wishlist items here -->
-                </div>
-
-                <!-- Cart Container -->
-                <div class="cart-container">
-                    <h2 class="text-center mb-4 fs-3 fw-bold">Shopping Cart</h2>
-                    <div class="cart-item">
-                        <p>Item 1</p>
-                        <button onclick="removeFromCart(this)">Remove</button>
-                    </div>
-                    <div class="cart-item">
-                        <p>Item 2</p>
-                        <button onclick="removeFromCart(this)">Remove</button>
-                    </div>
-                    <!-- Add more cart items here -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <input type="radio" style="background: beige;" class="form-check-input" name="addressSelection"
-        id="address${element.id}">
-
-
-    <!-- Your existing scripts or new scripts for wishlist functionality -->
-    <script>
-        // Sample function to remove an item from the wishlist
-        function addToCart(button) {
-            var item = button.parentElement.cloneNode(true);
-            item.querySelector('button').remove(); // Remove "Add to Cart" button from cart item
-            document.querySelector('.cart-container').appendChild(item);
-        }
-
-        // Sample function to remove an item from the cart
-        function removeFromCart(button) {
-            button.parentElement.remove();
-        }
-    </script>
+<body>
+  <div class="invoice-container">
+    <a href="./index.html" style="text-decoration: none;"><h2>FURNITURE EMPORIUM</h2></a>
+    <h2>Invoice</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product 1</td>
+          <td>2</td>
+          <td>$20.00</td>
+          <td>$40.00</td>
+        </tr>
+        <tr>
+          <td>Product 2</td>
+          <td>1</td>
+          <td>$30.00</td>
+          <td>$30.00</td>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>Subtotal</strong></td>
+          <td>$70.00</td>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>Shipping</strong></td>
+          <td>$10.00</td>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>Total</strong></td>
+          <td>$80.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="total">
+      <strong>Total:</strong> $80.00
+    </div>
+  </div>
 </body>
-
 </html>
