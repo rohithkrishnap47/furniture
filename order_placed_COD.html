@@ -250,18 +250,19 @@
 
     function makePDF() {
         // Use html2canvas to capture the current page
-        html2canvas(document.body).then(function (canvas) {
-            var doc = new jsPDF();
-            var imgWidth = 210; // Adjust as needed
-            var scaleFactor = imgWidth / canvas.width;
-            var imgHeight = canvas.height * scaleFactor;
+        // html2canvas(document.body).then(function (canvas) {
+        //     var doc = new jsPDF();
+        //     var imgWidth = 210; // Adjust as needed
+        //     var scaleFactor = imgWidth / canvas.width;
+        //     var imgHeight = canvas.height * scaleFactor;
 
-            // Add the captured HTML content as an image to the PDF
-            doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+        //     // Add the captured HTML content as an image to the PDF
+        //     doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
 
-            // Save the PDF
-            doc.save("current_page.pdf");
-        });
+        //     // Save the PDF
+        //     doc.save("current_page.pdf");
+        // });
+        window.location.href = "invoice-download.html";
     }
 
 
