@@ -509,7 +509,7 @@
         "handler": function (response) {
           console.log(response);
           alert("This step of Payment Succeeded");
-          window.location.href = "/order_success.html?id=" + order.orderId;
+          window.location.href = "/order_success.html?id=" + order._id;
         },
         "prefill": {
           // Here we are prefilling random contact
