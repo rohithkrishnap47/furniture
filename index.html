@@ -1123,15 +1123,15 @@
                 console.log("prod_console", prod);
                 productSlide.innerHTML =
 
-                    ` <div style="height: 100%;" class="me-xl-n4 me-xxl-n5" data-aos="fade-up" data-aos-delay="000">
-                    <picture style="height: 100%;" class="d-block mb-4 img-clip-shape-one">
-                        <img style="height: 100%;" class="w-100" title="" src="${prod.images}"
-                            alt="furniture_emporium_2024">
-                    </picture>
-                    <p class="title-small mb-2 text-muted">${prod.category}</p>
-                    <h4 class="lead fw-bold">${prod.name}</h4>
-                    <a href="./all_products.html" class="btn btn-psuedo align-self-start">Shop Now</a>
-                </div>`
+          `<div class="d-none d-sm-block me-xl-n4 me-xxl-n5" data-aos="fade-up" data-aos-delay="000">
+                <picture class="d-block mb-4 img-clip-shape-one">
+                    <img class="w-100" title="" src="${prod.images}" alt="furniture_emporium_2024">
+                </picture>
+                <p class="title-small mb-2 text-muted">${prod.category}</p>
+                <h4 class="lead fw-bold">${prod.name}</h4>
+                <a href="./all_products.html" class="btn btn-psuedo align-self-start">Shop Now</a>
+            </div>
+            `
 
                 productcontainer.appendChild(productSlide);
             });
