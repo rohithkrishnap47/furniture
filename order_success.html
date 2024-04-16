@@ -246,11 +246,9 @@
     window.jsPDF = window.jspdf.jsPDF;
 
     function makePDF() {
-        // Fetching the id parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const orderId = urlParams.get('id');
-
-        // Redirecting to the next page with id parameter in the URL
+        console.log(orderId,"hygtrfedhfgf");
         window.location.href = `invoice-download.html?id=${orderId}`;
 
     }
