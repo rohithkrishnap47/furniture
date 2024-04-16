@@ -1,123 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invoice Demo</title>
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
 
-    .invoice-container {
-      background-color: #fff;
-      max-width: 800px;
-      padding: 40px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 16px;
-    }
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
 
-    h2 {
-      text-align: center;
-      color: #333;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <!-- Include SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 20px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    .total {
-      margin-top: 20px;
-      text-align: right;
-      font-weight: bold;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .invoice-container {
-        padding: 20px;
-        font-size: 14px;
-      }
-
-      th, td {
-        padding: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .invoice-container {
-        padding: 10px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      table {
-        font-size: 12px;
-      }
-    }
-  </style>
+    <!-- Include SweetAlert2 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+    <title>F-Empo | Order Success</title>
 </head>
+
 <body>
-  <div class="invoice-container">
-    <a href="./index.html" style="text-decoration: none;"><h2>FURNITURE EMPORIUM</h2></a>
-    <h2>Invoice</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Product 1</td>
-          <td>2</td>
-          <td>$20.00</td>
-          <td>$40.00</td>
-        </tr>
-        <tr>
-          <td>Product 2</td>
-          <td>1</td>
-          <td>$30.00</td>
-          <td>$30.00</td>
-        </tr>
-        <tr>
-          <td colspan="3"><strong>Subtotal</strong></td>
-          <td>$70.00</td>
-        </tr>
-        <tr>
-          <td colspan="3"><strong>Shipping</strong></td>
-          <td>$10.00</td>
-        </tr>
-        <tr>
-          <td colspan="3"><strong>Total</strong></td>
-          <td>$80.00</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="total">
-      <strong>Total:</strong> $80.00
-    </div>
-  </div>
+    <section class="py-24 relative">
+        <div class="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto text-center">
+            <div class="flex items-center justify-center w-full h-full md:justify-between md:w-auto md:order-1 text-center"
+                id="navbar-sticky"> <a href="./index.html" class="flex items-center justify-center"> <svg
+                        class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                        <path
+                            d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                            fill="currentColor" fill-rule="evenodd" />
+                    </svg>
+                    <h2 class="font-manrope font-bold text-5xl leading-10 text-black text-center"> Furniture Emporium
+                    </h2>
+                </a> </div>
+
+
+            <h2 class="font-manrope font-bold text-4xl leading-10 text-black mb-4 text-center">
+                Invoice Details
+            </h2>
+            <p class="font-normal text-lg leading-8 text-gray-500 mb-11 text-center">Thanks for making a purchase, you
+                can check our order summary from below</p>
+            <div class="main-box border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
+                <div
+                    class="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
+                    <div class="data">
+                        <p class="font-semibold text-base leading-7 text-black text-center">Order Id: <span
+                                class="text-indigo-600 font-medium">#10234987</span></p>
+                        <p class="font-semibold text-base leading-7 text-black mt-4 text-center">Order Payment : <span
+                                class="text-gray-400 font-medium"> 18th march 2021</span></p>
+                    </div>
+                </div>
+                <div class="w-full px-3 min-[400px]:px-6">
+                    <div class="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 gap-6 w-full">
+                        <div class="img-box max-lg:w-full">
+                            <img src="https://pagedone.io/asset/uploads/1701167607.png" alt="Premium Watch image"
+                                class="aspect-square w-full lg:max-w-[140px]">
+                        </div>
+                        <div class="flex flex-row items-center w-full ">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 w-full">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <h2 class="font-semibold text-xl leading-8 text-black mb-3 text-center">Premium
+                                            Quality Dust Watch</h2>
+                                        <p class="font-normal text-lg leading-8 text-gray-500 mb-3 text-center">By: Dust
+                                            Studios</p>
+                                        <div class="flex items-center justify-center">
+                                            <p
+                                                class="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200 text-center">
+                                                Size: <span class="text-gray-500">100 ml</span></p>
+                                            <p class="font-medium text-base leading-7 text-black text-center">Qty: <span
+                                                    class="text-gray-500">2</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-5">
+                                    <div class="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3 justify-center">
+                                        <div class="flex gap-3 lg:block">
+                                            <p class="font-medium text-sm leading-7 text-black">price</p>
+                                            <p class="lg:mt-4 font-medium text-sm leading-7 text-indigo-600">$100</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3 justify-center">
+                                        <div class="flex gap-3 lg:block">
+                                            <p class="font-medium text-sm leading-7 text-black">Status</p>
+                                            <p
+                                                class="font-medium text-sm leading-6 whitespace-nowrap py-0.5 px-3 rounded-full lg:mt-3 bg-emerald-50 text-emerald-600 text-center">
+                                                Ready for Delivery</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3 justify-center">
+                                        <div class="flex gap-3 lg:block">
+                                            <p class="font-medium text-sm whitespace-nowrap leading-6 text-black">
+                                                Expected Delivery Time</p>
+                                            <p
+                                                class="font-medium text-base whitespace-nowrap leading-7 lg:mt-3 text-emerald-500 text-center">
+                                                23rd March 2021</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col lg:flex-row items-center py-6 gap-6 w-full">
+                        <div class="img-box max-lg:w-full">
+                            <img src="https://pagedone.io/asset/uploads/1701167621.png" alt="Diamond Watch image"
+                                class="aspect-square w-full lg:max-w-[140px]">
+                        </div>
+                        <div class="flex flex-row items-center w-full ">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 w-full">
+                                <div class="flex items-center">
+                                    <div class="">
+                                        <h2 class="font-semibold text-xl leading-8 text-black mb-3 text-center">Diamond
+                                            Platinum Watch</h2>
+                                        <p class="font-normal text-lg leading-8 text-gray-500 mb-3 text-center">Diamond
+                                            Dials</p>
+                                        <div class="flex items-center justify-center">
+                                            <p
+                                                class="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200 text-center">
+                                                Size: <span class="text-gray-500">Regular</span></p>
+                                            <p class="font-medium text-base leading-7 text-black text-center">Qty: <span
+                                                    class="text-gray-500">1</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-5">
+                                    <div class="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3 justify-center">
+                                        <div class="flex gap-3 lg:block">
+                                            <p class="font-medium text-sm leading-7 text-black">price</p>
+                                            <p class="lg:mt-4 font-medium text-sm leading-7 text-indigo-600">$100</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3 justify-center">
+                                        <div class="flex gap-3 lg:block">
+                                            <p class="font-medium text-sm leading-7 text-black">Status</p>
+                                            <p
+                                                class="font-medium text-sm leading-6 py-0.5 px-3 whitespace-nowrap rounded-full lg:mt-3 bg-indigo-50 text-indigo-600 text-center">
+                                                Dispatched</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3 justify-center">
+                                        <div class="flex gap-3 lg:block">
+                                            <p class="font-medium text-sm whitespace-nowrap leading-6 text-black">
+                                                Expected Delivery Time</p>
+                                            <p
+                                                class="font-medium text-base whitespace-nowrap leading-7 lg:mt-3 text-emerald-500 text-center">
+                                                23rd March 2021</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="w-full border-t border-gray-200 px-6 flex flex-col lg:flex-row items-center justify-between">
+                    <div class="flex flex-col sm:flex-row items-center max-lg:border-b border-gray-200 justify-center">
+                        <!-- <p class="font-medium text-lg text-gray-900 pl-6 py-3 max-lg:text-center">Paid using Credit Card
+                            <span class="text-gray-500">ending with 8822</span></p> -->
+                    </div>
+                    <p class="font-semibold text-lg text-black py-6 text-center">Total Price: <span
+                            class="text-indigo-600">$200.00</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script type="text/javascript">
+    window.html2canvas = html2canvas;
+    window.jsPDF = window.jspdf.jsPDF;
+
+    function makePDF() {
+        // Use html2canvas to capture the current page
+        html2canvas(document.body).then(function (canvas) {
+            var doc = new jsPDF();
+            var imgWidth = 210; // Adjust as needed
+            var scaleFactor = imgWidth / canvas.width;
+            var imgHeight = canvas.height * scaleFactor;
+
+            // Add the captured HTML content as an image to the PDF
+            doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+
+            // Save the PDF
+            doc.save("invoice.pdf");
+        });
+    }
+
+
+</script>
+<!-- <script>
+    function printinvoice() {
+        var doc = new jsPDF();
+
+        // Add HTML content from the current screen to the PDF
+        doc.html(document.body, {
+            callback: function (pdf) {
+                // Save the PDF file with a specific name
+                pdf.save('invoice.pdf');
+            }
+        });
+    }
+</script> -->
+
 </html>
