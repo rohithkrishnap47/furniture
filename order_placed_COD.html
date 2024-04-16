@@ -249,20 +249,12 @@
     window.jsPDF = window.jspdf.jsPDF;
 
     function makePDF() {
-        // Use html2canvas to capture the current page
-        // html2canvas(document.body).then(function (canvas) {
-        //     var doc = new jsPDF();
-        //     var imgWidth = 210; // Adjust as needed
-        //     var scaleFactor = imgWidth / canvas.width;
-        //     var imgHeight = canvas.height * scaleFactor;
+        // Fetching the id parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('id');
 
-        //     // Add the captured HTML content as an image to the PDF
-        //     doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
-
-        //     // Save the PDF
-        //     doc.save("current_page.pdf");
-        // });
-        window.location.href = "invoice-download.html";
+        // Redirecting to the next page with id parameter in the URL
+        window.location.href = `invoice-download.html?id=${orderId}`;
     }
 
 
