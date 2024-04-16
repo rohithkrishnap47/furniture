@@ -509,7 +509,7 @@
         "handler": function (response) {
           console.log(response);
           alert("This step of Payment Succeeded");
-          window.location.href = "/order_success.html";
+          window.location.href = "/order_success.html?id=" + order.orderId;
         },
         "prefill": {
           // Here we are prefilling random contact
@@ -670,8 +670,8 @@
         text: message,
         duration: 3000,
         close: true,
-        gravity: "top", 
-        position: 'center', 
+        gravity: "top",
+        position: 'center',
         backgroundColor: "linear-gradient(to right, #f12711, #f5af19)",
       }).showToast();
     }
@@ -681,8 +681,8 @@
         text: message,
         duration: 3000,
         close: true,
-        gravity: "top", 
-        position: 'center', 
+        gravity: "top",
+        position: 'center',
         backgroundColor: "linear-gradient(to right, #ff416c, #6666ff)",
       }).showToast();
     }
