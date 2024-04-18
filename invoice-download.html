@@ -146,11 +146,11 @@
             }).showToast();
 
             // Countdown
-            var countdown = 3; // Countdown duration in seconds
+            var countdown = 5;
             var countdownInterval = setInterval(function () {
                 if (countdown === 0) {
                     clearInterval(countdownInterval);
-                    redirectToProductPage(); // Redirect to all_products.html
+                    redirectToProductPage(); 
                 } else {
                     Toastify({
                         text: "Redirecting in " + countdown + " seconds",
@@ -203,11 +203,8 @@
                     const discount = data.product.reduce((acc, curr) => acc + curr.discount, 0);
                     document.getElementById("total-amount").textContent = `Total: ₹${totalAmount.toFixed(2)}`;
                     document.getElementById("delivery-fee").textContent = `Delivery Fee: ₹${deliveryFee.toFixed(2)}`;
-                    // const discountAmount = (totalAmount * (discount / 100)).toFixed(2); // Calculate discount amount
                     document.getElementById("discount-amount").textContent = `Discount: ₹${discount}`;
 
-                    // const totalAfterDiscountAndDelivery = totalAmount + deliveryFee - discountAmount;
-                    // document.getElementById("total-after-discount-and-delivery").textContent = `Total After Discount and Delivery: ₹${totalAfterDiscountAndDelivery.toFixed(2)}`;
 
                     setTimeout(makePDF, 1000);
                 })
