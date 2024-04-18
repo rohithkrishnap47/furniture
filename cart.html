@@ -187,6 +187,7 @@
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         };
+        checkCartEmpty();
         showCartItems();
 
         let products = [];
@@ -315,9 +316,32 @@
 
             priceContainer.appendChild(priceTot);
         }
+        function checkCartEmpty() {
+            fetch("https://furnitureemporium.shop/cart/showcart")
+                .then(response => response.json())
+                .then(data => {
+                    const cartItems = data.items; // Assuming the items are stored in an array called 'items'
 
-
-
+                    if (cartItems.length === 0) {
+                        Toastify({
+                            text: "CART IS EMPTY!!!",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "center",
+                            style: {
+                                background: "linear-gradient(to right, #36D1DC, #5B86E5)",
+                                color: "#fff",
+                                borderRadius: "10px",
+                                boxShadow: "none" // Removed box shadow
+                            }
+                        }).showToast();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching cart data:", error);
+                });
+        }
 
     </script>
 </body>
