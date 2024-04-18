@@ -104,6 +104,9 @@
             </tbody>
         </table>
         <div class="total" id="total-amount"></div>
+        <div id="delivery-fee"></div>
+        <div class="disc" id="discount-amount"></div>
+        <div class="total" id="total-after-discount-and-delivery"></div>        
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
@@ -158,15 +161,25 @@
                     data.product.forEach(product => {
                         const row = document.createElement("tr");
                         row.innerHTML = `
-                    <td>${product.name}</td>
-                    <td>1</td>
-                    <td>$${product.price.toFixed(2)}</td>
-                    <td>$${product.price.toFixed(2)}</td>
-                `;
+                            <td>${product.name}</td>
+                            <td>1</td>
+                            <td>₹${product.price.toFixed(2)}</td>
+                            <td>₹${product.price.toFixed(2)}</td>
+                        `;
                         productTableBody.appendChild(row);
                     });
 
-                    document.getElementById("total-amount").textContent = `Total: $${data.totalAmount.toFixed(2)}`;
+                    const totalAmount = data.totalAmount;
+                    const deliveryFee = 40;
+                    const discount = data.discount;
+
+                    document.getElementById("total-amount").textContent = `Total: ₹${totalAmount.toFixed(2)}`;
+                    document.getElementById("delivery-fee").textContent = `Delivery Fee: ₹${deliveryFee.toFixed(2)}`;
+                    const discountAmount = (totalAmount * (discount / 100)).toFixed(2);
+                    document.getElementById("discount-amount").textContent = `Discount: ₹${discountAmount}`;
+
+                    const totalAfterDiscountAndDelivery = totalAmount + deliveryFee - discountAmount;
+                    document.getElementById("total-after-discount-and-delivery").textContent = `Total After Discount and Delivery: $${totalAfterDiscountAndDelivery.toFixed(2)}`;
 
                     setTimeout(makePDF, 1000);
                 })
@@ -174,6 +187,7 @@
                     console.error("Error fetching data:", error);
                 });
         }
+
         function getOrderIdFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
             const orderId = urlParams.get('id');
@@ -182,6 +196,7 @@
         const orderId = getOrderIdFromUrl();
         fetchDataAndPopulate(orderId);
     </script>
+
 </body>
 
 </html>
