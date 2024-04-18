@@ -134,11 +134,11 @@
             Toastify({
                 text: "INVOICE has been downloaded",
                 duration: 2000,
-                close: true,
+                close: false,
                 gravity: "top",
                 position: "center",
                 style: {
-                    background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                    background: "linear-gradient(to right, #8E2DE2, #4A00E0)",
                     color: "#fff",
                     borderRadius: "10px",
                     boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)"
@@ -150,7 +150,7 @@
             var countdownInterval = setInterval(function () {
                 if (countdown === 0) {
                     clearInterval(countdownInterval);
-                    redirectToProductPage(); 
+                    redirectToProductPage();
                 } else {
                     Toastify({
                         text: "Redirecting in " + countdown + " seconds",
