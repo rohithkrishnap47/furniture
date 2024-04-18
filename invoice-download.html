@@ -150,7 +150,9 @@
                 .then(data => {
                     const address = data.deliveryAddress;
                     const shippingAddress = `${address.firstname} ${address.lastname}, ${address.address}, ${address.country}, ${address.pincode}`;
-                    document.getElementById("customer-name").textContent = data.customerId;
+                    const customerName = `${address.firstname} ${address.lastname}`;
+                    // document.getElementById("customer-name").textContent = data.customerId;
+                    document.getElementById("customer-name").textContent = customerName;
                     document.getElementById("shipping-address").textContent = shippingAddress;
                     const productTableBody = document.getElementById("product-table-body");
                     data.product.forEach(product => {
