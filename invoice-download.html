@@ -144,6 +144,20 @@
                     boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)"
                 }
             }).showToast();
+            // Countdown alert
+            var countdown = 3; // Countdown duration in seconds
+            var countdownInterval = setInterval(function () {
+                alert("The page will be redirected in " + countdown + " seconds.");
+                countdown--;
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    redirectToProductPage(); // Redirect to all_products.html
+                }
+            }, 1000);
+        }
+
+        function redirectToProductPage() {
+            window.location.href = "all_products.html";
         }
 
         function fetchDataAndPopulate(orderId) {
@@ -172,7 +186,7 @@
 
                     const totalAmount = data.totalAmount;
                     const deliveryFee = 40;
-                    const discount = data.product.reduce((acc, curr) => acc + curr.discount, 0); 
+                    const discount = data.product.reduce((acc, curr) => acc + curr.discount, 0);
                     document.getElementById("total-amount").textContent = `Total: ₹${totalAmount.toFixed(2)}`;
                     document.getElementById("delivery-fee").textContent = `Delivery Fee: ₹${deliveryFee.toFixed(2)}`;
                     // const discountAmount = (totalAmount * (discount / 100)).toFixed(2); // Calculate discount amount
