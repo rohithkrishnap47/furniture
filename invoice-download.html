@@ -104,20 +104,17 @@
                 </tr>
             </thead>
             <tbody id="product-table-body">
-                <!-- Dynamic rows will be added here -->
             </tbody>
         </table>
         <div class="total" id="total-amount"></div>
     </div>
 
-    <!-- Include necessary JavaScript libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script type="text/javascript">
         window.html2canvas = html2canvas;
         window.jsPDF = window.jspdf.jsPDF;
 
-        // Function to make PDF
         function makePDF() {
             html2canvas(document.querySelector(".invoice-container")).then(function (canvas) {
                 var doc = new jsPDF();
@@ -148,9 +145,8 @@
             }).showToast();
         }
 
-        // Function to fetch data from API and populate the HTML
         function fetchDataAndPopulate(orderId) {
-            const apiUrl = `https://furnitureemporium.shop/user/order?id=${orderId}`;
+            const apiUrl = `https://furnitureemporium.shop/user/order/${orderId}`;
 
             fetch(apiUrl)
                 .then(response => response.json())
@@ -172,7 +168,6 @@
                         productTableBody.appendChild(row);
                     });
 
-                    // Populate total amount
                     document.getElementById("total-amount").textContent = `Total: $${data.totalAmount.toFixed(2)}`;
 
                     setTimeout(makePDF, 1000);
@@ -182,7 +177,6 @@
                 });
         }
 
-        // Function to extract order ID from URL
         function getOrderIdFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
             const orderId = urlParams.get('id');
