@@ -144,14 +144,28 @@
                     boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)"
                 }
             }).showToast();
-            // Countdown alert
+
+            // Countdown
             var countdown = 3; // Countdown duration in seconds
             var countdownInterval = setInterval(function () {
-                alert("The page will be redirected in " + countdown + " seconds.");
-                countdown--;
-                if (countdown < 0) {
+                if (countdown === 0) {
                     clearInterval(countdownInterval);
                     redirectToProductPage(); // Redirect to all_products.html
+                } else {
+                    Toastify({
+                        text: "Redirecting in " + countdown + " seconds",
+                        duration: 1000,
+                        close: true,
+                        gravity: "top",
+                        position: "center",
+                        style: {
+                            background: "linear-gradient(to right, #36D1DC, #5B86E5)",
+                            color: "#fff",
+                            borderRadius: "10px",
+                            boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)"
+                        }
+                    }).showToast();
+                    countdown--;
                 }
             }, 1000);
         }
@@ -211,6 +225,7 @@
         const orderId = getOrderIdFromUrl();
         fetchDataAndPopulate(orderId);
     </script>
+
 
 </body>
 
