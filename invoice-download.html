@@ -78,11 +78,8 @@
             }
         }
     </style>
-
-    <!-- Include Toastify CSS -->
+    <!-- TOASTIFY -->
     <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
-
-    <!-- Include Toastify JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
@@ -151,20 +148,19 @@
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    // Populate customer name and shipping address
+                    const address = data.deliveryAddress;
+                    const shippingAddress = `${address.firstname} ${address.lastname}, ${address.address}, ${address.country}, ${address.pincode}`;
                     document.getElementById("customer-name").textContent = data.customerId;
-                    document.getElementById("shipping-address").textContent = data.deliveryAddress;
-
-                    // Populate product details
+                    document.getElementById("shipping-address").textContent = shippingAddress;
                     const productTableBody = document.getElementById("product-table-body");
                     data.product.forEach(product => {
                         const row = document.createElement("tr");
                         row.innerHTML = `
-                            <td>${product.name}</td>
-                            <td>1</td>
-                            <td>$${product.price.toFixed(2)}</td>
-                            <td>$${product.price.toFixed(2)}</td>
-                        `;
+                    <td>${product.name}</td>
+                    <td>1</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                `;
                         productTableBody.appendChild(row);
                     });
 
@@ -176,7 +172,6 @@
                     console.error("Error fetching data:", error);
                 });
         }
-
         function getOrderIdFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
             const orderId = urlParams.get('id');
