@@ -316,13 +316,28 @@
 
             priceContainer.appendChild(priceTot);
         }
-        function checkCartEmpty() {
-            fetch("https://furnitureemporium.shop/cart/showcart")
-                .then(response => response.json())
-                .then(data => {
-                    const cartItems = data.items; // Assuming the items are stored in an array called 'items'
 
-                    if (cartItems.length === 0) {
+
+        function checkCartEmpty() {
+            const token = localStorage.getItem('token');
+            const headers = {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            };
+
+            fetch("https://furnitureemporium.shop/cart/showcart", {
+                headers: headers
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const cartProducts = data.cartProducts; // Accessing the 'cartProducts' array from the response
+
+                    if (cartProducts.length === 0) {
                         Toastify({
                             text: "CART IS EMPTY!!!",
                             duration: 3000,
@@ -342,6 +357,7 @@
                     console.error("Error fetching cart data:", error);
                 });
         }
+
 
     </script>
 </body>
